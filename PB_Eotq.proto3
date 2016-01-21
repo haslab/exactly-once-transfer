@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package PB_Eotq;
+
+message MsgResouces {
+    uint32 lck = 1;
+    uint32 rck = 2;
+    uint32 val = 3;
+}
+
+/*
+message Node {
+    uint32 id  = 1;
+    uint32 sck = 2;
+    uint32 dck = 3;
+    string ip_addr = 4;
+    uint32 port = 5;
+    
+    
+
+    message Slot {
+        Map slot = 1;
+    }
+}
+*/
+
