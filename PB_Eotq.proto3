@@ -2,12 +2,28 @@ syntax = "proto3";
 
 package PB_Eotq;
 
-message MsgResouces {
-    uint32 lck = 1;
-    uint32 rck = 2;
-    uint32 val = 3;
+message MsgResources {
+    uint32 from  =1;
+    bytes  val   =2; /*is this necessary for the first announce message ???*/
+
+    message Slot {
+        uint32 sck =1;
+        uint32 dck =2;
+        bytes  val =3;
+    }
+
+    Slot slot =3;
+
+    message Token {
+        uint32 sck =1;
+        uint32 dck =2;
+        bytes  val =3;
+    }
+
+    Token token =4;
 }
 
+/* Message to store in file on each operation in order to recover from crashes ... for future implementations, ignoring for now */ 
 /*
 message Node {
     uint32 id  = 1;
