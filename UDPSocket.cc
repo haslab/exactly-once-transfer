@@ -65,16 +65,16 @@ Message* UDPSocket::listenMessage() {
         std::cout << "UDP_RAW_MSG_RECV: " << buffer << std::endl;
         
         /* Unmarshalling msg */
-        PB_Eotq::MsgResouces l_resources;
-        google::protobuf::io::ArrayInputStream ais(buffer, sizeof(buffer));
+        PB_Eotq::MsgResources msg;
+        google::protobuf::io::ArrayInputStream ais(buffer, sizeof (buffer));
         google::protobuf::io::CodedInputStream cis(&ais);
         uint32_t msgSize = 0;
         cis.ReadVarint32(&msgSize);
-        google::protobuf::io::CodedInputStream::Limit msgLimit = cis.PushLimit(msgSize);
-        l_resources.ParseFromCodedStream(&cis);
-        //std::cout << "RAW_MSG_UNMARSHALLED: " << std::endl << l_resources.DebugString() << std::endl;
+        cis.PushLimit(msgSize);
+        msg.ParseFromCodedStream(&cis);
+        //std::cout << "RAW_MSG: " << std::endl << msgAnnounce.DebugString() << std::endl;
         
-        return new Message(l_resources, r_addr);
+        return new Message(msg, r_addr);
     }
     return NULL;
 }
