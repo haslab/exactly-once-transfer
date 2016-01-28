@@ -32,12 +32,22 @@ float zero() {
     return 0;
 }
 
-float oplus (const float& a, const float& b) {
+float oplus (const float &a, const float &b) {
   return a + b;
 }
 
-int oplus (const int& a, const int& b) {
+int oplus (const int &a, const int &b) {
   return a + b;
+}
+
+float needs (const float &a, const float &b)
+{
+  return (b-a+abs(b-a))/4;
+}
+
+int needs (const int &a, const int &b)
+{
+  return (b-a+abs(b-a))/4;
 }
 
 template<typename T>
@@ -48,9 +58,9 @@ public:
     int sck;
     int dck;
     int port;
-    pthread_t tid;
-    map < pair<int, int>, T > slots;
-    map < pair<int, int>, T > tokens;
+    
+    map < int, pair<pair<int, int>, T> > slots;
+    map < int, pair<pair<int, int>, T> > tokens;
 
     /* CONSTRUCTOR */
     Eotq(int i=0, int p=0, T v=zero()) {
@@ -69,19 +79,45 @@ public:
     {
         val = oplus(val, v);
     }
+    
+    unsigned int numTokens() {
+        return tokens.size();
+    }
 
-    /* function to parse the output to screen */
-    friend ostream &operator<<(ostream& output, const Eotq & o) {
+    unsigned int numSlots() {
+        return slots.size();
+    }
+
+    /* parse the output to screen */
+    friend ostream &operator<<(ostream &output, const Eotq &o) {
         output << "id: " << o.id << " val: " << o.val <<
                   " sck: " << o.sck << " dck: " << o.dck << endl;
-        typename map < pair<int, int>, T >::const_iterator it;
+        typename map < int, pair<pair<int, int>, T> >::const_iterator it;
         for (it = o.slots.begin(); it != o.slots.end(); it++) {
-            output << "SLOTS:" << "([sck:" << it->first.first << ", dck: " << it->first.second << "])" << endl;
+            output << "SLOT: ( " << it->first 
+                   << ", [sck:" << it->second.first.first << ", dck: " << it->second.first.second << "], "
+                   << it->second.second << ")"<< endl;
         }
         for (it = o.tokens.begin(); it != o.tokens.end(); it++) {
-            output << "TOKENS:" << "([sck:" << it->first.first << ", dck: " << it->first.second << "])" << endl;
+            output << "TOKEN: ( " << it->first 
+                   << ", [sck:" << it->second.first.first << ", dck: " << it->second.first.second << "], "
+                   << it->second.second << ")"<< endl;
         }
         return output;
+    }
+	
+    void createSlot() 
+    {
+        typename map < int, pair<pair<int, int>, T> >::iterator it_slots = slots.find(id);
+        T hint;
+        hint = needs(6, 10);
+        int id = 1;
+
+        if (it_slots == slots.end() && hint != 0) {
+            slots[id] = make_pair(make_pair(90, 90), hint);
+            dck++;
+        }
+        
     }
     
     void startListening() 
@@ -95,7 +131,8 @@ public:
                 for (;;) {
                     if ((msg = udp.listenMessage()) != NULL) {
                         cout << "RAW_MSG_RECV: " << msg->getRaw() << endl;
-                        //cout << "DEBUG_MSG_RECV: " << msg->unmarshall() << endl;
+                        createSlot();                       
+                        
                         //udp.sendMessage(msg->getRaw() + " :: writed back from id:" , msg->getSenderAddr());
                     }
                   }
@@ -236,7 +273,7 @@ void brokerThread(string ip_addr="", int port=0)
                     {
                         // print node data
                         stringstream reply;
-                        reply << "\tReply: " << nodes[atoi(ops[1].c_str())];
+                        reply << "----Reply----" << endl << nodes[atoi(ops[1].c_str())];
                         write(r_sock , reply.str().c_str() , reply.str().length());
                     }
                     else if ( ops[0] == "+" )
@@ -315,12 +352,11 @@ void InitializeNodes()
     
     
     /* Broker thread */
-    /*
     boost::thread broker(boost::bind(brokerThread, "", 7000));
-    cout << "Waiting for clients to join." << endl;
-    broker.join();
-    cout << "end join" << endl;
-    */
+    broker.detach();
+    //cout << "Waiting for clients to join." << endl;
+    //broker.join();
+    //cout << "end join" << endl;
 }
 
 void test1() {
@@ -328,7 +364,6 @@ void test1() {
     cout << "    >>---- INITIAL CONFIG" << endl;
     Eotq<int> node1(1);
     Eotq<int> node2(2);
-    //node1.val=100;ls
     node1.dck=10; node1.plus(10);
     node2.sck=20; node2.plus(20);
     cout << node1 << endl;
