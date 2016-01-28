@@ -18,19 +18,19 @@
 class Message {
 private:
     std::string raw_msg;
-    PB_Eotq::MsgResouces l_resources;
+    PB_Eotq::MsgResources msg;
     struct sockaddr_in from, to, l_addr, r_addr;
     //Node* from;
     
 public:
     Message();
-    Message(PB_Eotq::MsgResouces msg, struct sockaddr_in f);
+    Message(PB_Eotq::MsgResources msg, struct sockaddr_in f);
     Message(const Message& orig);
     virtual ~Message();
     
     std::string getRaw();
-    std::string unmarshall();
-    std::string marshall();
+    bool Has_Slot();
+    bool Has_Token();
     struct sockaddr_in getSenderAddr();
 };
 

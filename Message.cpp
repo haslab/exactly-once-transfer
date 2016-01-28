@@ -15,28 +15,22 @@
 #include "Message.h"
 
 Message::Message() {}
-Message::Message(PB_Eotq::MsgResouces msg, struct sockaddr_in f): l_resources(msg), from(f) {};
+Message::Message(PB_Eotq::MsgResources m, struct sockaddr_in f): msg(m), from(f) {};
 Message::Message(const Message& orig) {}
 Message::~Message() {}
 
 std::string Message::getRaw() {
-    return l_resources.DebugString();
+    return msg.DebugString();
 }
 
-std::string Message::unmarshall() {
+bool Message::Has_Slot() {
+    return msg.has_slot();
 }
 
-std::string Message::marshall() {
-    return raw_msg;
+bool Message::Has_Token() {
+    return msg.has_token();
 }
 
 struct sockaddr_in Message::getSenderAddr(){
     return from;
 }
-
-/*
-bool Message::isEmpty() {
-    if (msg == "")
-        return true;
-    return false;
-}*/
