@@ -16,9 +16,14 @@
 
 #include <iostream>
 #include "Message.h"
+#include <cstring>
 #include "PB_Eotq.proto3.pb.h"
 #include <google/protobuf/io/zero_copy_stream_impl_lite.h>
 #include <google/protobuf/io/coded_stream.h>
+/* includes for socket communication */
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h> /* -> for closing socket */
 
 #define MAX_BUFSIZE 548 // 576 - 8 (udp header) - 20 (ipv4 header) = 548
                         //   NOTE: 14 bytes (ethernet header) --> doesn't count for this
@@ -31,9 +36,10 @@ public:
     virtual ~UDPSocket();
     
     bool createSocket();
+    void closeSocket();
     bool bindSocket(std::string ip_addr, int p);
     Message* listenMessage();
-    bool sendMessage(std::string m, struct sockaddr_in r_addr);
+    bool sendMessage(Message &msg, struct sockaddr_in r_addr);
     struct sockaddr_in convertIP(std::string& ip, int& p);
     
 private:

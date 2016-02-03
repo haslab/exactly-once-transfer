@@ -37,37 +37,38 @@ void protobuf_AssignDesc_PB_5fEotq_2eproto3();
 void protobuf_ShutdownFile_PB_5fEotq_2eproto3();
 
 class MsgResources;
-class MsgResources_Slot;
-class MsgResources_Token;
+class MsgResources_Map;
+class Node;
+class Node_Map;
 
 // ===================================================================
 
-class MsgResources_Slot : public ::google::protobuf::Message {
+class MsgResources_Map : public ::google::protobuf::Message {
  public:
-  MsgResources_Slot();
-  virtual ~MsgResources_Slot();
+  MsgResources_Map();
+  virtual ~MsgResources_Map();
 
-  MsgResources_Slot(const MsgResources_Slot& from);
+  MsgResources_Map(const MsgResources_Map& from);
 
-  inline MsgResources_Slot& operator=(const MsgResources_Slot& from) {
+  inline MsgResources_Map& operator=(const MsgResources_Map& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgResources_Slot& default_instance();
+  static const MsgResources_Map& default_instance();
 
-  void Swap(MsgResources_Slot* other);
+  void Swap(MsgResources_Map* other);
 
   // implements Message ----------------------------------------------
 
-  inline MsgResources_Slot* New() const { return New(NULL); }
+  inline MsgResources_Map* New() const { return New(NULL); }
 
-  MsgResources_Slot* New(::google::protobuf::Arena* arena) const;
+  MsgResources_Map* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MsgResources_Slot& from);
-  void MergeFrom(const MsgResources_Slot& from);
+  void CopyFrom(const MsgResources_Map& from);
+  void MergeFrom(const MsgResources_Map& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -82,7 +83,7 @@ class MsgResources_Slot : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(MsgResources_Slot* other);
+  void InternalSwap(MsgResources_Map* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -121,7 +122,7 @@ class MsgResources_Slot : public ::google::protobuf::Message {
   ::std::string* release_val();
   void set_allocated_val(::std::string* val);
 
-  // @@protoc_insertion_point(class_scope:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(class_scope:PB_Eotq.MsgResources.Map)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -135,104 +136,7 @@ class MsgResources_Slot : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_PB_5fEotq_2eproto3();
 
   void InitAsDefaultInstance();
-  static MsgResources_Slot* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class MsgResources_Token : public ::google::protobuf::Message {
- public:
-  MsgResources_Token();
-  virtual ~MsgResources_Token();
-
-  MsgResources_Token(const MsgResources_Token& from);
-
-  inline MsgResources_Token& operator=(const MsgResources_Token& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgResources_Token& default_instance();
-
-  void Swap(MsgResources_Token* other);
-
-  // implements Message ----------------------------------------------
-
-  inline MsgResources_Token* New() const { return New(NULL); }
-
-  MsgResources_Token* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MsgResources_Token& from);
-  void MergeFrom(const MsgResources_Token& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(MsgResources_Token* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional uint32 sck = 1;
-  void clear_sck();
-  static const int kSckFieldNumber = 1;
-  ::google::protobuf::uint32 sck() const;
-  void set_sck(::google::protobuf::uint32 value);
-
-  // optional uint32 dck = 2;
-  void clear_dck();
-  static const int kDckFieldNumber = 2;
-  ::google::protobuf::uint32 dck() const;
-  void set_dck(::google::protobuf::uint32 value);
-
-  // optional bytes val = 3;
-  void clear_val();
-  static const int kValFieldNumber = 3;
-  const ::std::string& val() const;
-  void set_val(const ::std::string& value);
-  void set_val(const char* value);
-  void set_val(const void* value, size_t size);
-  ::std::string* mutable_val();
-  ::std::string* release_val();
-  void set_allocated_val(::std::string* val);
-
-  // @@protoc_insertion_point(class_scope:PB_Eotq.MsgResources.Token)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool _is_default_instance_;
-  ::google::protobuf::uint32 sck_;
-  ::google::protobuf::uint32 dck_;
-  ::google::protobuf::internal::ArenaStringPtr val_;
-  mutable int _cached_size_;
-  friend void  protobuf_AddDesc_PB_5fEotq_2eproto3();
-  friend void protobuf_AssignDesc_PB_5fEotq_2eproto3();
-  friend void protobuf_ShutdownFile_PB_5fEotq_2eproto3();
-
-  void InitAsDefaultInstance();
-  static MsgResources_Token* default_instance_;
+  static MsgResources_Map* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -290,8 +194,7 @@ class MsgResources : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef MsgResources_Slot Slot;
-  typedef MsgResources_Token Token;
+  typedef MsgResources_Map Map;
 
   // accessors -------------------------------------------------------
 
@@ -312,23 +215,35 @@ class MsgResources : public ::google::protobuf::Message {
   ::std::string* release_val();
   void set_allocated_val(::std::string* val);
 
-  // optional .PB_Eotq.MsgResources.Slot slot = 3;
+  // optional uint64 sck = 3;
+  void clear_sck();
+  static const int kSckFieldNumber = 3;
+  ::google::protobuf::uint64 sck() const;
+  void set_sck(::google::protobuf::uint64 value);
+
+  // optional uint64 dck = 4;
+  void clear_dck();
+  static const int kDckFieldNumber = 4;
+  ::google::protobuf::uint64 dck() const;
+  void set_dck(::google::protobuf::uint64 value);
+
+  // optional .PB_Eotq.MsgResources.Map slot = 5;
   bool has_slot() const;
   void clear_slot();
-  static const int kSlotFieldNumber = 3;
-  const ::PB_Eotq::MsgResources_Slot& slot() const;
-  ::PB_Eotq::MsgResources_Slot* mutable_slot();
-  ::PB_Eotq::MsgResources_Slot* release_slot();
-  void set_allocated_slot(::PB_Eotq::MsgResources_Slot* slot);
+  static const int kSlotFieldNumber = 5;
+  const ::PB_Eotq::MsgResources_Map& slot() const;
+  ::PB_Eotq::MsgResources_Map* mutable_slot();
+  ::PB_Eotq::MsgResources_Map* release_slot();
+  void set_allocated_slot(::PB_Eotq::MsgResources_Map* slot);
 
-  // optional .PB_Eotq.MsgResources.Token token = 4;
+  // optional .PB_Eotq.MsgResources.Map token = 6;
   bool has_token() const;
   void clear_token();
-  static const int kTokenFieldNumber = 4;
-  const ::PB_Eotq::MsgResources_Token& token() const;
-  ::PB_Eotq::MsgResources_Token* mutable_token();
-  ::PB_Eotq::MsgResources_Token* release_token();
-  void set_allocated_token(::PB_Eotq::MsgResources_Token* token);
+  static const int kTokenFieldNumber = 6;
+  const ::PB_Eotq::MsgResources_Map& token() const;
+  ::PB_Eotq::MsgResources_Map* mutable_token();
+  ::PB_Eotq::MsgResources_Map* release_token();
+  void set_allocated_token(::PB_Eotq::MsgResources_Map* token);
 
   // @@protoc_insertion_point(class_scope:PB_Eotq.MsgResources)
  private:
@@ -336,8 +251,10 @@ class MsgResources : public ::google::protobuf::Message {
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr val_;
-  ::PB_Eotq::MsgResources_Slot* slot_;
-  ::PB_Eotq::MsgResources_Token* token_;
+  ::google::protobuf::uint64 sck_;
+  ::google::protobuf::uint64 dck_;
+  ::PB_Eotq::MsgResources_Map* slot_;
+  ::PB_Eotq::MsgResources_Map* token_;
   ::google::protobuf::uint32 from_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_PB_5fEotq_2eproto3();
@@ -347,158 +264,326 @@ class MsgResources : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgResources* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class Node_Map : public ::google::protobuf::Message {
+ public:
+  Node_Map();
+  virtual ~Node_Map();
+
+  Node_Map(const Node_Map& from);
+
+  inline Node_Map& operator=(const Node_Map& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Node_Map& default_instance();
+
+  void Swap(Node_Map* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Node_Map* New() const { return New(NULL); }
+
+  Node_Map* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Node_Map& from);
+  void MergeFrom(const Node_Map& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(Node_Map* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
+
+  // optional uint32 sck = 2;
+  void clear_sck();
+  static const int kSckFieldNumber = 2;
+  ::google::protobuf::uint32 sck() const;
+  void set_sck(::google::protobuf::uint32 value);
+
+  // optional uint32 dck = 3;
+  void clear_dck();
+  static const int kDckFieldNumber = 3;
+  ::google::protobuf::uint32 dck() const;
+  void set_dck(::google::protobuf::uint32 value);
+
+  // optional bytes val = 4;
+  void clear_val();
+  static const int kValFieldNumber = 4;
+  const ::std::string& val() const;
+  void set_val(const ::std::string& value);
+  void set_val(const char* value);
+  void set_val(const void* value, size_t size);
+  ::std::string* mutable_val();
+  ::std::string* release_val();
+  void set_allocated_val(::std::string* val);
+
+  // @@protoc_insertion_point(class_scope:PB_Eotq.Node.Map)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 sck_;
+  ::google::protobuf::internal::ArenaStringPtr val_;
+  ::google::protobuf::uint32 dck_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_PB_5fEotq_2eproto3();
+  friend void protobuf_AssignDesc_PB_5fEotq_2eproto3();
+  friend void protobuf_ShutdownFile_PB_5fEotq_2eproto3();
+
+  void InitAsDefaultInstance();
+  static Node_Map* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Node : public ::google::protobuf::Message {
+ public:
+  Node();
+  virtual ~Node();
+
+  Node(const Node& from);
+
+  inline Node& operator=(const Node& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Node& default_instance();
+
+  void Swap(Node* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Node* New() const { return New(NULL); }
+
+  Node* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Node& from);
+  void MergeFrom(const Node& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(Node* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef Node_Map Map;
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
+
+  // optional uint32 sck = 2;
+  void clear_sck();
+  static const int kSckFieldNumber = 2;
+  ::google::protobuf::uint32 sck() const;
+  void set_sck(::google::protobuf::uint32 value);
+
+  // optional uint32 dck = 3;
+  void clear_dck();
+  static const int kDckFieldNumber = 3;
+  ::google::protobuf::uint32 dck() const;
+  void set_dck(::google::protobuf::uint32 value);
+
+  // optional string ip_addr = 4;
+  void clear_ip_addr();
+  static const int kIpAddrFieldNumber = 4;
+  const ::std::string& ip_addr() const;
+  void set_ip_addr(const ::std::string& value);
+  void set_ip_addr(const char* value);
+  void set_ip_addr(const char* value, size_t size);
+  ::std::string* mutable_ip_addr();
+  ::std::string* release_ip_addr();
+  void set_allocated_ip_addr(::std::string* ip_addr);
+
+  // optional uint32 port = 5;
+  void clear_port();
+  static const int kPortFieldNumber = 5;
+  ::google::protobuf::uint32 port() const;
+  void set_port(::google::protobuf::uint32 value);
+
+  // repeated .PB_Eotq.Node.Map slots = 6;
+  int slots_size() const;
+  void clear_slots();
+  static const int kSlotsFieldNumber = 6;
+  const ::PB_Eotq::Node_Map& slots(int index) const;
+  ::PB_Eotq::Node_Map* mutable_slots(int index);
+  ::PB_Eotq::Node_Map* add_slots();
+  ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >*
+      mutable_slots();
+  const ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >&
+      slots() const;
+
+  // repeated .PB_Eotq.Node.Map tokens = 7;
+  int tokens_size() const;
+  void clear_tokens();
+  static const int kTokensFieldNumber = 7;
+  const ::PB_Eotq::Node_Map& tokens(int index) const;
+  ::PB_Eotq::Node_Map* mutable_tokens(int index);
+  ::PB_Eotq::Node_Map* add_tokens();
+  ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >*
+      mutable_tokens();
+  const ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >&
+      tokens() const;
+
+  // @@protoc_insertion_point(class_scope:PB_Eotq.Node)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 sck_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
+  ::google::protobuf::uint32 dck_;
+  ::google::protobuf::uint32 port_;
+  ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map > slots_;
+  ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map > tokens_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_PB_5fEotq_2eproto3();
+  friend void protobuf_AssignDesc_PB_5fEotq_2eproto3();
+  friend void protobuf_ShutdownFile_PB_5fEotq_2eproto3();
+
+  void InitAsDefaultInstance();
+  static Node* default_instance_;
+};
 // ===================================================================
 
 
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgResources_Slot
+// MsgResources_Map
 
 // optional uint32 sck = 1;
-inline void MsgResources_Slot::clear_sck() {
+inline void MsgResources_Map::clear_sck() {
   sck_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgResources_Slot::sck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Slot.sck)
+inline ::google::protobuf::uint32 MsgResources_Map::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.sck)
   return sck_;
 }
-inline void MsgResources_Slot::set_sck(::google::protobuf::uint32 value) {
+inline void MsgResources_Map::set_sck(::google::protobuf::uint32 value) {
   
   sck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Slot.sck)
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.sck)
 }
 
 // optional uint32 dck = 2;
-inline void MsgResources_Slot::clear_dck() {
+inline void MsgResources_Map::clear_dck() {
   dck_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgResources_Slot::dck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Slot.dck)
+inline ::google::protobuf::uint32 MsgResources_Map::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.dck)
   return dck_;
 }
-inline void MsgResources_Slot::set_dck(::google::protobuf::uint32 value) {
+inline void MsgResources_Map::set_dck(::google::protobuf::uint32 value) {
   
   dck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Slot.dck)
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.dck)
 }
 
 // optional bytes val = 3;
-inline void MsgResources_Slot::clear_val() {
+inline void MsgResources_Map::clear_val() {
   val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& MsgResources_Slot::val() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Slot.val)
+inline const ::std::string& MsgResources_Map::val() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.val)
   return val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MsgResources_Slot::set_val(const ::std::string& value) {
+inline void MsgResources_Map::set_val(const ::std::string& value) {
   
   val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.val)
 }
-inline void MsgResources_Slot::set_val(const char* value) {
+inline void MsgResources_Map::set_val(const char* value) {
   
   val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_set_char:PB_Eotq.MsgResources.Map.val)
 }
-inline void MsgResources_Slot::set_val(const void* value, size_t size) {
+inline void MsgResources_Map::set_val(const void* value, size_t size) {
   
   val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.MsgResources.Map.val)
 }
-inline ::std::string* MsgResources_Slot::mutable_val() {
+inline ::std::string* MsgResources_Map::mutable_val() {
   
-  // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.Map.val)
   return val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* MsgResources_Slot::release_val() {
+inline ::std::string* MsgResources_Map::release_val() {
   
   return val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MsgResources_Slot::set_allocated_val(::std::string* val) {
+inline void MsgResources_Map::set_allocated_val(::std::string* val) {
   if (val != NULL) {
     
   } else {
     
   }
   val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), val);
-  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.Slot.val)
-}
-
-// -------------------------------------------------------------------
-
-// MsgResources_Token
-
-// optional uint32 sck = 1;
-inline void MsgResources_Token::clear_sck() {
-  sck_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgResources_Token::sck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Token.sck)
-  return sck_;
-}
-inline void MsgResources_Token::set_sck(::google::protobuf::uint32 value) {
-  
-  sck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Token.sck)
-}
-
-// optional uint32 dck = 2;
-inline void MsgResources_Token::clear_dck() {
-  dck_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgResources_Token::dck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Token.dck)
-  return dck_;
-}
-inline void MsgResources_Token::set_dck(::google::protobuf::uint32 value) {
-  
-  dck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Token.dck)
-}
-
-// optional bytes val = 3;
-inline void MsgResources_Token::clear_val() {
-  val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& MsgResources_Token::val() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Token.val)
-  return val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MsgResources_Token::set_val(const ::std::string& value) {
-  
-  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Token.val)
-}
-inline void MsgResources_Token::set_val(const char* value) {
-  
-  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PB_Eotq.MsgResources.Token.val)
-}
-inline void MsgResources_Token::set_val(const void* value, size_t size) {
-  
-  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.MsgResources.Token.val)
-}
-inline ::std::string* MsgResources_Token::mutable_val() {
-  
-  // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.Token.val)
-  return val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MsgResources_Token::release_val() {
-  
-  return val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MsgResources_Token::set_allocated_val(::std::string* val) {
-  if (val != NULL) {
-    
-  } else {
-    
-  }
-  val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), val);
-  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.Token.val)
+  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.Map.val)
 }
 
 // -------------------------------------------------------------------
@@ -562,7 +647,35 @@ inline void MsgResources::set_allocated_val(::std::string* val) {
   // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.val)
 }
 
-// optional .PB_Eotq.MsgResources.Slot slot = 3;
+// optional uint64 sck = 3;
+inline void MsgResources::clear_sck() {
+  sck_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 MsgResources::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.sck)
+  return sck_;
+}
+inline void MsgResources::set_sck(::google::protobuf::uint64 value) {
+  
+  sck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.sck)
+}
+
+// optional uint64 dck = 4;
+inline void MsgResources::clear_dck() {
+  dck_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 MsgResources::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.dck)
+  return dck_;
+}
+inline void MsgResources::set_dck(::google::protobuf::uint64 value) {
+  
+  dck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.dck)
+}
+
+// optional .PB_Eotq.MsgResources.Map slot = 5;
 inline bool MsgResources::has_slot() const {
   return !_is_default_instance_ && slot_ != NULL;
 }
@@ -570,25 +683,25 @@ inline void MsgResources::clear_slot() {
   if (GetArenaNoVirtual() == NULL && slot_ != NULL) delete slot_;
   slot_ = NULL;
 }
-inline const ::PB_Eotq::MsgResources_Slot& MsgResources::slot() const {
+inline const ::PB_Eotq::MsgResources_Map& MsgResources::slot() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.slot)
   return slot_ != NULL ? *slot_ : *default_instance_->slot_;
 }
-inline ::PB_Eotq::MsgResources_Slot* MsgResources::mutable_slot() {
+inline ::PB_Eotq::MsgResources_Map* MsgResources::mutable_slot() {
   
   if (slot_ == NULL) {
-    slot_ = new ::PB_Eotq::MsgResources_Slot;
+    slot_ = new ::PB_Eotq::MsgResources_Map;
   }
   // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.slot)
   return slot_;
 }
-inline ::PB_Eotq::MsgResources_Slot* MsgResources::release_slot() {
+inline ::PB_Eotq::MsgResources_Map* MsgResources::release_slot() {
   
-  ::PB_Eotq::MsgResources_Slot* temp = slot_;
+  ::PB_Eotq::MsgResources_Map* temp = slot_;
   slot_ = NULL;
   return temp;
 }
-inline void MsgResources::set_allocated_slot(::PB_Eotq::MsgResources_Slot* slot) {
+inline void MsgResources::set_allocated_slot(::PB_Eotq::MsgResources_Map* slot) {
   delete slot_;
   slot_ = slot;
   if (slot) {
@@ -599,7 +712,7 @@ inline void MsgResources::set_allocated_slot(::PB_Eotq::MsgResources_Slot* slot)
   // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.slot)
 }
 
-// optional .PB_Eotq.MsgResources.Token token = 4;
+// optional .PB_Eotq.MsgResources.Map token = 6;
 inline bool MsgResources::has_token() const {
   return !_is_default_instance_ && token_ != NULL;
 }
@@ -607,25 +720,25 @@ inline void MsgResources::clear_token() {
   if (GetArenaNoVirtual() == NULL && token_ != NULL) delete token_;
   token_ = NULL;
 }
-inline const ::PB_Eotq::MsgResources_Token& MsgResources::token() const {
+inline const ::PB_Eotq::MsgResources_Map& MsgResources::token() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.token)
   return token_ != NULL ? *token_ : *default_instance_->token_;
 }
-inline ::PB_Eotq::MsgResources_Token* MsgResources::mutable_token() {
+inline ::PB_Eotq::MsgResources_Map* MsgResources::mutable_token() {
   
   if (token_ == NULL) {
-    token_ = new ::PB_Eotq::MsgResources_Token;
+    token_ = new ::PB_Eotq::MsgResources_Map;
   }
   // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.token)
   return token_;
 }
-inline ::PB_Eotq::MsgResources_Token* MsgResources::release_token() {
+inline ::PB_Eotq::MsgResources_Map* MsgResources::release_token() {
   
-  ::PB_Eotq::MsgResources_Token* temp = token_;
+  ::PB_Eotq::MsgResources_Map* temp = token_;
   token_ = NULL;
   return temp;
 }
-inline void MsgResources::set_allocated_token(::PB_Eotq::MsgResources_Token* token) {
+inline void MsgResources::set_allocated_token(::PB_Eotq::MsgResources_Map* token) {
   delete token_;
   token_ = token;
   if (token) {
@@ -636,7 +749,261 @@ inline void MsgResources::set_allocated_token(::PB_Eotq::MsgResources_Token* tok
   // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.token)
 }
 
+// -------------------------------------------------------------------
+
+// Node_Map
+
+// optional uint32 id = 1;
+inline void Node_Map::clear_id() {
+  id_ = 0u;
+}
+inline ::google::protobuf::uint32 Node_Map::id() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.id)
+  return id_;
+}
+inline void Node_Map::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.id)
+}
+
+// optional uint32 sck = 2;
+inline void Node_Map::clear_sck() {
+  sck_ = 0u;
+}
+inline ::google::protobuf::uint32 Node_Map::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.sck)
+  return sck_;
+}
+inline void Node_Map::set_sck(::google::protobuf::uint32 value) {
+  
+  sck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.sck)
+}
+
+// optional uint32 dck = 3;
+inline void Node_Map::clear_dck() {
+  dck_ = 0u;
+}
+inline ::google::protobuf::uint32 Node_Map::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.dck)
+  return dck_;
+}
+inline void Node_Map::set_dck(::google::protobuf::uint32 value) {
+  
+  dck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.dck)
+}
+
+// optional bytes val = 4;
+inline void Node_Map::clear_val() {
+  val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Node_Map::val() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.val)
+  return val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Node_Map::set_val(const ::std::string& value) {
+  
+  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.val)
+}
+inline void Node_Map::set_val(const char* value) {
+  
+  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PB_Eotq.Node.Map.val)
+}
+inline void Node_Map::set_val(const void* value, size_t size) {
+  
+  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.Node.Map.val)
+}
+inline ::std::string* Node_Map::mutable_val() {
+  
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.Map.val)
+  return val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Node_Map::release_val() {
+  
+  return val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Node_Map::set_allocated_val(::std::string* val) {
+  if (val != NULL) {
+    
+  } else {
+    
+  }
+  val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), val);
+  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.Node.Map.val)
+}
+
+// -------------------------------------------------------------------
+
+// Node
+
+// optional uint32 id = 1;
+inline void Node::clear_id() {
+  id_ = 0u;
+}
+inline ::google::protobuf::uint32 Node::id() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.id)
+  return id_;
+}
+inline void Node::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.id)
+}
+
+// optional uint32 sck = 2;
+inline void Node::clear_sck() {
+  sck_ = 0u;
+}
+inline ::google::protobuf::uint32 Node::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.sck)
+  return sck_;
+}
+inline void Node::set_sck(::google::protobuf::uint32 value) {
+  
+  sck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.sck)
+}
+
+// optional uint32 dck = 3;
+inline void Node::clear_dck() {
+  dck_ = 0u;
+}
+inline ::google::protobuf::uint32 Node::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.dck)
+  return dck_;
+}
+inline void Node::set_dck(::google::protobuf::uint32 value) {
+  
+  dck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.dck)
+}
+
+// optional string ip_addr = 4;
+inline void Node::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Node::ip_addr() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.ip_addr)
+  return ip_addr_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Node::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.ip_addr)
+}
+inline void Node::set_ip_addr(const char* value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PB_Eotq.Node.ip_addr)
+}
+inline void Node::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.Node.ip_addr)
+}
+inline ::std::string* Node::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Node::release_ip_addr() {
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Node::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.Node.ip_addr)
+}
+
+// optional uint32 port = 5;
+inline void Node::clear_port() {
+  port_ = 0u;
+}
+inline ::google::protobuf::uint32 Node::port() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.port)
+  return port_;
+}
+inline void Node::set_port(::google::protobuf::uint32 value) {
+  
+  port_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.port)
+}
+
+// repeated .PB_Eotq.Node.Map slots = 6;
+inline int Node::slots_size() const {
+  return slots_.size();
+}
+inline void Node::clear_slots() {
+  slots_.Clear();
+}
+inline const ::PB_Eotq::Node_Map& Node::slots(int index) const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.slots)
+  return slots_.Get(index);
+}
+inline ::PB_Eotq::Node_Map* Node::mutable_slots(int index) {
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.slots)
+  return slots_.Mutable(index);
+}
+inline ::PB_Eotq::Node_Map* Node::add_slots() {
+  // @@protoc_insertion_point(field_add:PB_Eotq.Node.slots)
+  return slots_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >*
+Node::mutable_slots() {
+  // @@protoc_insertion_point(field_mutable_list:PB_Eotq.Node.slots)
+  return &slots_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >&
+Node::slots() const {
+  // @@protoc_insertion_point(field_list:PB_Eotq.Node.slots)
+  return slots_;
+}
+
+// repeated .PB_Eotq.Node.Map tokens = 7;
+inline int Node::tokens_size() const {
+  return tokens_.size();
+}
+inline void Node::clear_tokens() {
+  tokens_.Clear();
+}
+inline const ::PB_Eotq::Node_Map& Node::tokens(int index) const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.tokens)
+  return tokens_.Get(index);
+}
+inline ::PB_Eotq::Node_Map* Node::mutable_tokens(int index) {
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.tokens)
+  return tokens_.Mutable(index);
+}
+inline ::PB_Eotq::Node_Map* Node::add_tokens() {
+  // @@protoc_insertion_point(field_add:PB_Eotq.Node.tokens)
+  return tokens_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >*
+Node::mutable_tokens() {
+  // @@protoc_insertion_point(field_mutable_list:PB_Eotq.Node.tokens)
+  return &tokens_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >&
+Node::tokens() const {
+  // @@protoc_insertion_point(field_list:PB_Eotq.Node.tokens)
+  return tokens_;
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

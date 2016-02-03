@@ -4,39 +4,40 @@ package PB_Eotq;
 
 message MsgResources {
     uint32 from  =1;
-    bytes  val   =2; /*is this necessary for the first announce message ???*/
+    bytes  val   =2;
+    uint64 sck   =3;
+    uint64 dck   =4;
 
-    message Slot {
+
+    message Map {
         uint32 sck =1;
         uint32 dck =2;
         bytes  val =3;
     }
 
-    Slot slot =3;
-
-    message Token {
-        uint32 sck =1;
-        uint32 dck =2;
-        bytes  val =3;
-    }
-
-    Token token =4;
+    Map slot  =5;
+    Map token =6;
 }
 
 /* Message to store in file on each operation in order to recover from crashes ... for future implementations, ignoring for now */ 
-/*
+
 message Node {
     uint32 id  = 1;
     uint32 sck = 2;
     uint32 dck = 3;
     string ip_addr = 4;
     uint32 port = 5;
-    
-    
 
-    message Slot {
-        Map slot = 1;
+    message Map {
+        uint32 id  =1;
+        uint32 sck =2;
+        uint32 dck =3;
+        bytes  val =4;
     }
+    
+    repeated Map slots  =6;
+    repeated Map tokens =7;
+
 }
-*/
+
 

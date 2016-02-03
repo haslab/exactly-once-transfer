@@ -106,34 +106,97 @@ public:
         return output;
     }
 	
-    void createSlot() 
+    void createSlot(Eotq<T> &j) 
     {
-        typename map < int, pair<pair<int, int>, T> >::iterator it_slots = slots.find(id);
-        T hint;
-        hint = needs(6, 10);
-        int id = 1;
-
-        if (it_slots == slots.end() && hint != 0) {
-            slots[id] = make_pair(make_pair(90, 90), hint);
-            dck++;
-        }
+        typename map < int, pair<pair<int, int>, T> >::iterator its = slots.find(id);
         
+        if ( its == slots.end() )
+        {
+            T hint;
+            hint = needs(val, j.val);
+            //cout << "VAL_1=" << val << " :: VAL_2=" << j.val << " :: H=" << hint << endl;
+            if ( hint != zero()) {
+                slots[j.id] = make_pair(make_pair(j.sck, dck), hint);
+                dck++;
+            }
+        }
     }
     
     void startListening() 
     {
         UDPSocket udp;
-        Message* msg;
+        Message *msg_rcv;
         if (udp.createSocket()) {
             //cout << "[SUCCESS]: Creating socket." << endl;
             if (udp.bindSocket("", port)) {
                 cout << "[SUCCESS]: Binded on port " << port << endl;
                 for (;;) {
-                    if ((msg = udp.listenMessage()) != NULL) {
-                        cout << "RAW_MSG_RECV: " << msg->getRaw() << endl;
-                        createSlot();                       
+                    if ((msg_rcv = udp.listenMessage()) != NULL) {
+                        //cout << "RAW_MSG_RECV: " << msg->getRaw() << endl;
+                        /* Initialization for testing */
+                        val = 4;
+                        dck = 20;
+                        /* END Initialization */
+                        stringstream sstream(msg_rcv->getNodeVal());
+                        Eotq<T> r_node(msg_rcv->getNodeId());
+                        r_node.sck = msg_rcv->getNodeSck();
+                        r_node.dck = msg_rcv->getNodeDck();
+                        sstream >> r_node.val;
+                        if ( msg_rcv->hasSlot() ) {
+                            r_node.slots[msg_rcv->getNodeId()] = make_pair(make_pair(msg_rcv->getNodeSlotSck(), msg_rcv->getNodeSlotDck()), 0);
+                            sstream.str(std::string());
+                            sstream.clear();
+                            sstream.str(msg_rcv->getNodeSlotVal());
+                            sstream >> r_node.slots[msg_rcv->getNodeId()].second;
+                        }
+                        if ( msg_rcv->hasToken() ) {
+                            r_node.tokens[msg_rcv->getNodeId()] = make_pair(make_pair(msg_rcv->getNodeTokenSck(), msg_rcv->getNodeTokenDck()), 0);
+                            sstream.str(std::string());
+                            sstream.clear();
+                            sstream.str(msg_rcv->getNodeTokenVal());
+                            sstream >> r_node.tokens[msg_rcv->getNodeId()].second;
+                        }   
+                        createSlot(r_node);
+                        //cout << r_node << endl;
                         
-                        //udp.sendMessage(msg->getRaw() + " :: writed back from id:" , msg->getSenderAddr());
+                        /* PREPARING TO SEND REPLY MESSAGE*/
+                        Message msg_reply;
+                        msg_reply.setNodeId(id);
+                        msg_reply.setNodeSck(sck);
+                        msg_reply.setNodeDck(dck);
+                        sstream.str(std::string());
+                        sstream.clear();
+                        sstream << val;
+                        msg_reply.setNodeVal(sstream.str());
+                        
+                        typename map < int, pair<pair<int, int>, T> >::const_iterator it;
+                        for (it = slots.begin(); it != slots.end(); it++) {
+                            if (it->first == r_node.id)
+                            {
+                                sstream.str(std::string());
+                                sstream.clear();
+                                sstream << it->second.second;
+                                msg_reply.setNodeSlot(it->second.first.first, it->second.first.second, sstream.str());
+                            }
+                        }
+                        for (it = tokens.begin(); it != tokens.end(); it++) {
+                            if (it->first == r_node.id)
+                            {
+                                sstream.str(std::string());
+                                sstream.clear();
+                                sstream << it->second.second;
+                                msg_reply.setNodeToken(it->second.first.first, it->second.first.second, sstream.str());
+                            }
+                        }
+                        
+                        UDPSocket udp_send;
+                        if (udp_send.createSocket()) {
+                            if (udp_send.bindSocket("", 0)) {
+                                udp_send.sendMessage(msg_reply, msg_rcv->getSenderAddr());
+                                udp_send.closeSocket();
+                            }
+                        }
+                        
                     }
                   }
             } 
@@ -311,9 +374,9 @@ void brokerThread(string ip_addr="", int port=0)
 void InitializeNodes()
 {
     cout << "Starting Nodes ..." << endl;
-    /* Initialize base values values to nodes (if needed) */
     cout << "SIZE_Nodes: " << nodes.size() << endl;
     cout << "SIZE_Neighbors: " << neighbors.size() << endl;
+    /* Initialize base values values to nodes (if needed) */
     for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
         nodes[i].id     = i;
         nodes[i].port   = START_LST_PORT + i;
@@ -360,15 +423,15 @@ void InitializeNodes()
 }
 
 void test1() {
-    cout << "----------------------< Starting >----------------------" << endl;
-    cout << "    >>---- INITIAL CONFIG" << endl;
-    Eotq<int> node1(1);
-    Eotq<int> node2(2);
-    node1.dck=10; node1.plus(10);
-    node2.sck=20; node2.plus(20);
-    cout << node1 << endl;
-    cout << node2 << endl;
-    cout << "-------------------------< END >------------------------" << endl;
+//    cout << "----------------------< Starting >----------------------" << endl;
+//    cout << "    >>---- INITIAL CONFIG" << endl;
+//    Eotq<int> node1(1);
+//    Eotq<int> node2(2);
+//    node1.dck=10; node1.plus(10);
+//    node2.sck=20; node2.plus(20);
+//    cout << node1 << endl;
+//    cout << node2 << endl;
+//    cout << "-------------------------< END >------------------------" << endl;
 }
 
     

@@ -23,12 +23,15 @@ namespace {
 const ::google::protobuf::Descriptor* MsgResources_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgResources_reflection_ = NULL;
-const ::google::protobuf::Descriptor* MsgResources_Slot_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* MsgResources_Map_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  MsgResources_Slot_reflection_ = NULL;
-const ::google::protobuf::Descriptor* MsgResources_Token_descriptor_ = NULL;
+  MsgResources_Map_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Node_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  MsgResources_Token_reflection_ = NULL;
+  Node_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Node_Map_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Node_Map_reflection_ = NULL;
 
 }  // namespace
 
@@ -40,9 +43,11 @@ void protobuf_AssignDesc_PB_5fEotq_2eproto3() {
       "PB_Eotq.proto3");
   GOOGLE_CHECK(file != NULL);
   MsgResources_descriptor_ = file->message_type(0);
-  static const int MsgResources_offsets_[4] = {
+  static const int MsgResources_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, from_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, val_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, sck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, dck_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, slot_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, token_),
   };
@@ -57,40 +62,62 @@ void protobuf_AssignDesc_PB_5fEotq_2eproto3() {
       sizeof(MsgResources),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources, _is_default_instance_));
-  MsgResources_Slot_descriptor_ = MsgResources_descriptor_->nested_type(0);
-  static const int MsgResources_Slot_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Slot, sck_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Slot, dck_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Slot, val_),
+  MsgResources_Map_descriptor_ = MsgResources_descriptor_->nested_type(0);
+  static const int MsgResources_Map_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Map, sck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Map, dck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Map, val_),
   };
-  MsgResources_Slot_reflection_ =
+  MsgResources_Map_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      MsgResources_Slot_descriptor_,
-      MsgResources_Slot::default_instance_,
-      MsgResources_Slot_offsets_,
+      MsgResources_Map_descriptor_,
+      MsgResources_Map::default_instance_,
+      MsgResources_Map_offsets_,
       -1,
       -1,
       -1,
-      sizeof(MsgResources_Slot),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Slot, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Slot, _is_default_instance_));
-  MsgResources_Token_descriptor_ = MsgResources_descriptor_->nested_type(1);
-  static const int MsgResources_Token_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Token, sck_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Token, dck_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Token, val_),
+      sizeof(MsgResources_Map),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Map, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Map, _is_default_instance_));
+  Node_descriptor_ = file->message_type(1);
+  static const int Node_offsets_[7] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, sck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, dck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, ip_addr_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, port_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, slots_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, tokens_),
   };
-  MsgResources_Token_reflection_ =
+  Node_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      MsgResources_Token_descriptor_,
-      MsgResources_Token::default_instance_,
-      MsgResources_Token_offsets_,
+      Node_descriptor_,
+      Node::default_instance_,
+      Node_offsets_,
       -1,
       -1,
       -1,
-      sizeof(MsgResources_Token),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Token, _internal_metadata_),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgResources_Token, _is_default_instance_));
+      sizeof(Node),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node, _is_default_instance_));
+  Node_Map_descriptor_ = Node_descriptor_->nested_type(0);
+  static const int Node_Map_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node_Map, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node_Map, sck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node_Map, dck_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node_Map, val_),
+  };
+  Node_Map_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      Node_Map_descriptor_,
+      Node_Map::default_instance_,
+      Node_Map_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(Node_Map),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node_Map, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Node_Map, _is_default_instance_));
 }
 
 namespace {
@@ -106,9 +133,11 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgResources_descriptor_, &MsgResources::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      MsgResources_Slot_descriptor_, &MsgResources_Slot::default_instance());
+      MsgResources_Map_descriptor_, &MsgResources_Map::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      MsgResources_Token_descriptor_, &MsgResources_Token::default_instance());
+      Node_descriptor_, &Node::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      Node_Map_descriptor_, &Node_Map::default_instance());
 }
 
 }  // namespace
@@ -116,10 +145,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_PB_5fEotq_2eproto3() {
   delete MsgResources::default_instance_;
   delete MsgResources_reflection_;
-  delete MsgResources_Slot::default_instance_;
-  delete MsgResources_Slot_reflection_;
-  delete MsgResources_Token::default_instance_;
-  delete MsgResources_Token_reflection_;
+  delete MsgResources_Map::default_instance_;
+  delete MsgResources_Map_reflection_;
+  delete Node::default_instance_;
+  delete Node_reflection_;
+  delete Node_Map::default_instance_;
+  delete Node_Map_reflection_;
 }
 
 void protobuf_AddDesc_PB_5fEotq_2eproto3() {
@@ -129,21 +160,27 @@ void protobuf_AddDesc_PB_5fEotq_2eproto3() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016PB_Eotq.proto3\022\007PB_Eotq\"\336\001\n\014MsgResourc"
-    "es\022\014\n\004from\030\001 \001(\r\022\013\n\003val\030\002 \001(\014\022(\n\004slot\030\003 "
-    "\001(\0132\032.PB_Eotq.MsgResources.Slot\022*\n\005token"
-    "\030\004 \001(\0132\033.PB_Eotq.MsgResources.Token\032-\n\004S"
-    "lot\022\013\n\003sck\030\001 \001(\r\022\013\n\003dck\030\002 \001(\r\022\013\n\003val\030\003 \001"
-    "(\014\032.\n\005Token\022\013\n\003sck\030\001 \001(\r\022\013\n\003dck\030\002 \001(\r\022\013\n"
-    "\003val\030\003 \001(\014b\006proto3", 258);
+    "\n\016PB_Eotq.proto3\022\007PB_Eotq\"\304\001\n\014MsgResourc"
+    "es\022\014\n\004from\030\001 \001(\r\022\013\n\003val\030\002 \001(\014\022\013\n\003sck\030\003 \001"
+    "(\004\022\013\n\003dck\030\004 \001(\004\022\'\n\004slot\030\005 \001(\0132\031.PB_Eotq."
+    "MsgResources.Map\022(\n\005token\030\006 \001(\0132\031.PB_Eot"
+    "q.MsgResources.Map\032,\n\003Map\022\013\n\003sck\030\001 \001(\r\022\013"
+    "\n\003dck\030\002 \001(\r\022\013\n\003val\030\003 \001(\014\"\312\001\n\004Node\022\n\n\002id\030"
+    "\001 \001(\r\022\013\n\003sck\030\002 \001(\r\022\013\n\003dck\030\003 \001(\r\022\017\n\007ip_ad"
+    "dr\030\004 \001(\t\022\014\n\004port\030\005 \001(\r\022 \n\005slots\030\006 \003(\0132\021."
+    "PB_Eotq.Node.Map\022!\n\006tokens\030\007 \003(\0132\021.PB_Eo"
+    "tq.Node.Map\0328\n\003Map\022\n\n\002id\030\001 \001(\r\022\013\n\003sck\030\002 "
+    "\001(\r\022\013\n\003dck\030\003 \001(\r\022\013\n\003val\030\004 \001(\014b\006proto3", 437);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PB_Eotq.proto3", &protobuf_RegisterTypes);
   MsgResources::default_instance_ = new MsgResources();
-  MsgResources_Slot::default_instance_ = new MsgResources_Slot();
-  MsgResources_Token::default_instance_ = new MsgResources_Token();
+  MsgResources_Map::default_instance_ = new MsgResources_Map();
+  Node::default_instance_ = new Node();
+  Node_Map::default_instance_ = new Node_Map();
   MsgResources::default_instance_->InitAsDefaultInstance();
-  MsgResources_Slot::default_instance_->InitAsDefaultInstance();
-  MsgResources_Token::default_instance_->InitAsDefaultInstance();
+  MsgResources_Map::default_instance_->InitAsDefaultInstance();
+  Node::default_instance_->InitAsDefaultInstance();
+  Node_Map::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_PB_5fEotq_2eproto3);
 }
 
@@ -167,30 +204,30 @@ static void MergeFromFail(int line) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgResources_Slot::kSckFieldNumber;
-const int MsgResources_Slot::kDckFieldNumber;
-const int MsgResources_Slot::kValFieldNumber;
+const int MsgResources_Map::kSckFieldNumber;
+const int MsgResources_Map::kDckFieldNumber;
+const int MsgResources_Map::kValFieldNumber;
 #endif  // !_MSC_VER
 
-MsgResources_Slot::MsgResources_Slot()
+MsgResources_Map::MsgResources_Map()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(constructor:PB_Eotq.MsgResources.Map)
 }
 
-void MsgResources_Slot::InitAsDefaultInstance() {
+void MsgResources_Map::InitAsDefaultInstance() {
   _is_default_instance_ = true;
 }
 
-MsgResources_Slot::MsgResources_Slot(const MsgResources_Slot& from)
+MsgResources_Map::MsgResources_Map(const MsgResources_Map& from)
   : ::google::protobuf::Message(),
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(copy_constructor:PB_Eotq.MsgResources.Map)
 }
 
-void MsgResources_Slot::SharedCtor() {
+void MsgResources_Map::SharedCtor() {
     _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
@@ -199,45 +236,45 @@ void MsgResources_Slot::SharedCtor() {
   val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-MsgResources_Slot::~MsgResources_Slot() {
-  // @@protoc_insertion_point(destructor:PB_Eotq.MsgResources.Slot)
+MsgResources_Map::~MsgResources_Map() {
+  // @@protoc_insertion_point(destructor:PB_Eotq.MsgResources.Map)
   SharedDtor();
 }
 
-void MsgResources_Slot::SharedDtor() {
+void MsgResources_Map::SharedDtor() {
   val_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
 
-void MsgResources_Slot::SetCachedSize(int size) const {
+void MsgResources_Map::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* MsgResources_Slot::descriptor() {
+const ::google::protobuf::Descriptor* MsgResources_Map::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return MsgResources_Slot_descriptor_;
+  return MsgResources_Map_descriptor_;
 }
 
-const MsgResources_Slot& MsgResources_Slot::default_instance() {
+const MsgResources_Map& MsgResources_Map::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_PB_5fEotq_2eproto3();
   return *default_instance_;
 }
 
-MsgResources_Slot* MsgResources_Slot::default_instance_ = NULL;
+MsgResources_Map* MsgResources_Map::default_instance_ = NULL;
 
-MsgResources_Slot* MsgResources_Slot::New(::google::protobuf::Arena* arena) const {
-  MsgResources_Slot* n = new MsgResources_Slot;
+MsgResources_Map* MsgResources_Map::New(::google::protobuf::Arena* arena) const {
+  MsgResources_Map* n = new MsgResources_Map;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void MsgResources_Slot::Clear() {
+void MsgResources_Map::Clear() {
 #define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgResources_Slot*>(16)->f)
+  &reinterpret_cast<MsgResources_Map*>(16)->f)
 
 #define ZR_(first, last) do {\
   ::memset(&first, 0,\
@@ -252,11 +289,11 @@ void MsgResources_Slot::Clear() {
 
 }
 
-bool MsgResources_Slot::MergePartialFromCodedStream(
+bool MsgResources_Map::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(parse_start:PB_Eotq.MsgResources.Map)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -317,17 +354,17 @@ bool MsgResources_Slot::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(parse_success:PB_Eotq.MsgResources.Map)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(parse_failure:PB_Eotq.MsgResources.Map)
   return false;
 #undef DO_
 }
 
-void MsgResources_Slot::SerializeWithCachedSizes(
+void MsgResources_Map::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(serialize_start:PB_Eotq.MsgResources.Map)
   // optional uint32 sck = 1;
   if (this->sck() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->sck(), output);
@@ -344,12 +381,12 @@ void MsgResources_Slot::SerializeWithCachedSizes(
       3, this->val(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(serialize_end:PB_Eotq.MsgResources.Map)
 }
 
-::google::protobuf::uint8* MsgResources_Slot::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* MsgResources_Map::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(serialize_to_array_start:PB_Eotq.MsgResources.Map)
   // optional uint32 sck = 1;
   if (this->sck() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->sck(), target);
@@ -367,11 +404,11 @@ void MsgResources_Slot::SerializeWithCachedSizes(
         3, this->val(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PB_Eotq.MsgResources.Slot)
+  // @@protoc_insertion_point(serialize_to_array_end:PB_Eotq.MsgResources.Map)
   return target;
 }
 
-int MsgResources_Slot::ByteSize() const {
+int MsgResources_Map::ByteSize() const {
   int total_size = 0;
 
   // optional uint32 sck = 1;
@@ -401,10 +438,10 @@ int MsgResources_Slot::ByteSize() const {
   return total_size;
 }
 
-void MsgResources_Slot::MergeFrom(const ::google::protobuf::Message& from) {
+void MsgResources_Map::MergeFrom(const ::google::protobuf::Message& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const MsgResources_Slot* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const MsgResources_Slot>(
+  const MsgResources_Map* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const MsgResources_Map>(
           &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -413,7 +450,7 @@ void MsgResources_Slot::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void MsgResources_Slot::MergeFrom(const MsgResources_Slot& from) {
+void MsgResources_Map::MergeFrom(const MsgResources_Map& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.sck() != 0) {
     set_sck(from.sck());
@@ -427,28 +464,28 @@ void MsgResources_Slot::MergeFrom(const MsgResources_Slot& from) {
   }
 }
 
-void MsgResources_Slot::CopyFrom(const ::google::protobuf::Message& from) {
+void MsgResources_Map::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void MsgResources_Slot::CopyFrom(const MsgResources_Slot& from) {
+void MsgResources_Map::CopyFrom(const MsgResources_Map& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgResources_Slot::IsInitialized() const {
+bool MsgResources_Map::IsInitialized() const {
 
   return true;
 }
 
-void MsgResources_Slot::Swap(MsgResources_Slot* other) {
+void MsgResources_Map::Swap(MsgResources_Map* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgResources_Slot::InternalSwap(MsgResources_Slot* other) {
+void MsgResources_Map::InternalSwap(MsgResources_Map* other) {
   std::swap(sck_, other->sck_);
   std::swap(dck_, other->dck_);
   val_.Swap(&other->val_);
@@ -456,312 +493,11 @@ void MsgResources_Slot::InternalSwap(MsgResources_Slot* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata MsgResources_Slot::GetMetadata() const {
+::google::protobuf::Metadata MsgResources_Map::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = MsgResources_Slot_descriptor_;
-  metadata.reflection = MsgResources_Slot_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
-const int MsgResources_Token::kSckFieldNumber;
-const int MsgResources_Token::kDckFieldNumber;
-const int MsgResources_Token::kValFieldNumber;
-#endif  // !_MSC_VER
-
-MsgResources_Token::MsgResources_Token()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:PB_Eotq.MsgResources.Token)
-}
-
-void MsgResources_Token::InitAsDefaultInstance() {
-  _is_default_instance_ = true;
-}
-
-MsgResources_Token::MsgResources_Token(const MsgResources_Token& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PB_Eotq.MsgResources.Token)
-}
-
-void MsgResources_Token::SharedCtor() {
-    _is_default_instance_ = false;
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  sck_ = 0u;
-  dck_ = 0u;
-  val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-MsgResources_Token::~MsgResources_Token() {
-  // @@protoc_insertion_point(destructor:PB_Eotq.MsgResources.Token)
-  SharedDtor();
-}
-
-void MsgResources_Token::SharedDtor() {
-  val_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
-  }
-}
-
-void MsgResources_Token::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* MsgResources_Token::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return MsgResources_Token_descriptor_;
-}
-
-const MsgResources_Token& MsgResources_Token::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_PB_5fEotq_2eproto3();
-  return *default_instance_;
-}
-
-MsgResources_Token* MsgResources_Token::default_instance_ = NULL;
-
-MsgResources_Token* MsgResources_Token::New(::google::protobuf::Arena* arena) const {
-  MsgResources_Token* n = new MsgResources_Token;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void MsgResources_Token::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgResources_Token*>(16)->f)
-
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
-
-  ZR_(sck_, dck_);
-  val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-
-#undef ZR_HELPER_
-#undef ZR_
-
-}
-
-bool MsgResources_Token::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PB_Eotq.MsgResources.Token)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 sck = 1;
-      case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &sck_)));
-
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_dck;
-        break;
-      }
-
-      // optional uint32 dck = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_dck:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &dck_)));
-
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(26)) goto parse_val;
-        break;
-      }
-
-      // optional bytes val = 3;
-      case 3: {
-        if (tag == 26) {
-         parse_val:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_val()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:PB_Eotq.MsgResources.Token)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:PB_Eotq.MsgResources.Token)
-  return false;
-#undef DO_
-}
-
-void MsgResources_Token::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PB_Eotq.MsgResources.Token)
-  // optional uint32 sck = 1;
-  if (this->sck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->sck(), output);
-  }
-
-  // optional uint32 dck = 2;
-  if (this->dck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->dck(), output);
-  }
-
-  // optional bytes val = 3;
-  if (this->val().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      3, this->val(), output);
-  }
-
-  // @@protoc_insertion_point(serialize_end:PB_Eotq.MsgResources.Token)
-}
-
-::google::protobuf::uint8* MsgResources_Token::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PB_Eotq.MsgResources.Token)
-  // optional uint32 sck = 1;
-  if (this->sck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->sck(), target);
-  }
-
-  // optional uint32 dck = 2;
-  if (this->dck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->dck(), target);
-  }
-
-  // optional bytes val = 3;
-  if (this->val().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        3, this->val(), target);
-  }
-
-  // @@protoc_insertion_point(serialize_to_array_end:PB_Eotq.MsgResources.Token)
-  return target;
-}
-
-int MsgResources_Token::ByteSize() const {
-  int total_size = 0;
-
-  // optional uint32 sck = 1;
-  if (this->sck() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->sck());
-  }
-
-  // optional uint32 dck = 2;
-  if (this->dck() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->dck());
-  }
-
-  // optional bytes val = 3;
-  if (this->val().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->val());
-  }
-
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void MsgResources_Token::MergeFrom(const ::google::protobuf::Message& from) {
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const MsgResources_Token* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const MsgResources_Token>(
-          &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void MsgResources_Token::MergeFrom(const MsgResources_Token& from) {
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from.sck() != 0) {
-    set_sck(from.sck());
-  }
-  if (from.dck() != 0) {
-    set_dck(from.dck());
-  }
-  if (from.val().size() > 0) {
-
-    val_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.val_);
-  }
-}
-
-void MsgResources_Token::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void MsgResources_Token::CopyFrom(const MsgResources_Token& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool MsgResources_Token::IsInitialized() const {
-
-  return true;
-}
-
-void MsgResources_Token::Swap(MsgResources_Token* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void MsgResources_Token::InternalSwap(MsgResources_Token* other) {
-  std::swap(sck_, other->sck_);
-  std::swap(dck_, other->dck_);
-  val_.Swap(&other->val_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata MsgResources_Token::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = MsgResources_Token_descriptor_;
-  metadata.reflection = MsgResources_Token_reflection_;
+  metadata.descriptor = MsgResources_Map_descriptor_;
+  metadata.reflection = MsgResources_Map_reflection_;
   return metadata;
 }
 
@@ -771,6 +507,8 @@ void MsgResources_Token::InternalSwap(MsgResources_Token* other) {
 #ifndef _MSC_VER
 const int MsgResources::kFromFieldNumber;
 const int MsgResources::kValFieldNumber;
+const int MsgResources::kSckFieldNumber;
+const int MsgResources::kDckFieldNumber;
 const int MsgResources::kSlotFieldNumber;
 const int MsgResources::kTokenFieldNumber;
 #endif  // !_MSC_VER
@@ -783,8 +521,8 @@ MsgResources::MsgResources()
 
 void MsgResources::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  slot_ = const_cast< ::PB_Eotq::MsgResources_Slot*>(&::PB_Eotq::MsgResources_Slot::default_instance());
-  token_ = const_cast< ::PB_Eotq::MsgResources_Token*>(&::PB_Eotq::MsgResources_Token::default_instance());
+  slot_ = const_cast< ::PB_Eotq::MsgResources_Map*>(&::PB_Eotq::MsgResources_Map::default_instance());
+  token_ = const_cast< ::PB_Eotq::MsgResources_Map*>(&::PB_Eotq::MsgResources_Map::default_instance());
 }
 
 MsgResources::MsgResources(const MsgResources& from)
@@ -801,6 +539,8 @@ void MsgResources::SharedCtor() {
   _cached_size_ = 0;
   from_ = 0u;
   val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sck_ = GOOGLE_ULONGLONG(0);
+  dck_ = GOOGLE_ULONGLONG(0);
   slot_ = NULL;
   token_ = NULL;
 }
@@ -844,12 +584,25 @@ MsgResources* MsgResources::New(::google::protobuf::Arena* arena) const {
 }
 
 void MsgResources::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgResources*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(sck_, dck_);
   from_ = 0u;
   val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && slot_ != NULL) delete slot_;
   slot_ = NULL;
   if (GetArenaNoVirtual() == NULL && token_ != NULL) delete token_;
   token_ = NULL;
+
+#undef ZR_HELPER_
+#undef ZR_
+
 }
 
 bool MsgResources::MergePartialFromCodedStream(
@@ -885,26 +638,56 @@ bool MsgResources::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_slot;
+        if (input->ExpectTag(24)) goto parse_sck;
         break;
       }
 
-      // optional .PB_Eotq.MsgResources.Slot slot = 3;
+      // optional uint64 sck = 3;
       case 3: {
-        if (tag == 26) {
+        if (tag == 24) {
+         parse_sck:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &sck_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_dck;
+        break;
+      }
+
+      // optional uint64 dck = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_dck:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &dck_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_slot;
+        break;
+      }
+
+      // optional .PB_Eotq.MsgResources.Map slot = 5;
+      case 5: {
+        if (tag == 42) {
          parse_slot:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_slot()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_token;
+        if (input->ExpectTag(50)) goto parse_token;
         break;
       }
 
-      // optional .PB_Eotq.MsgResources.Token token = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional .PB_Eotq.MsgResources.Map token = 6;
+      case 6: {
+        if (tag == 50) {
          parse_token:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_token()));
@@ -950,16 +733,26 @@ void MsgResources::SerializeWithCachedSizes(
       2, this->val(), output);
   }
 
-  // optional .PB_Eotq.MsgResources.Slot slot = 3;
-  if (this->has_slot()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->slot_, output);
+  // optional uint64 sck = 3;
+  if (this->sck() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->sck(), output);
   }
 
-  // optional .PB_Eotq.MsgResources.Token token = 4;
+  // optional uint64 dck = 4;
+  if (this->dck() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->dck(), output);
+  }
+
+  // optional .PB_Eotq.MsgResources.Map slot = 5;
+  if (this->has_slot()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *this->slot_, output);
+  }
+
+  // optional .PB_Eotq.MsgResources.Map token = 6;
   if (this->has_token()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *this->token_, output);
+      6, *this->token_, output);
   }
 
   // @@protoc_insertion_point(serialize_end:PB_Eotq.MsgResources)
@@ -980,18 +773,28 @@ void MsgResources::SerializeWithCachedSizes(
         2, this->val(), target);
   }
 
-  // optional .PB_Eotq.MsgResources.Slot slot = 3;
+  // optional uint64 sck = 3;
+  if (this->sck() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->sck(), target);
+  }
+
+  // optional uint64 dck = 4;
+  if (this->dck() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->dck(), target);
+  }
+
+  // optional .PB_Eotq.MsgResources.Map slot = 5;
   if (this->has_slot()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, *this->slot_, target);
+        5, *this->slot_, target);
   }
 
-  // optional .PB_Eotq.MsgResources.Token token = 4;
+  // optional .PB_Eotq.MsgResources.Map token = 6;
   if (this->has_token()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, *this->token_, target);
+        6, *this->token_, target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:PB_Eotq.MsgResources)
@@ -1015,14 +818,28 @@ int MsgResources::ByteSize() const {
         this->val());
   }
 
-  // optional .PB_Eotq.MsgResources.Slot slot = 3;
+  // optional uint64 sck = 3;
+  if (this->sck() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->sck());
+  }
+
+  // optional uint64 dck = 4;
+  if (this->dck() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->dck());
+  }
+
+  // optional .PB_Eotq.MsgResources.Map slot = 5;
   if (this->has_slot()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->slot_);
   }
 
-  // optional .PB_Eotq.MsgResources.Token token = 4;
+  // optional .PB_Eotq.MsgResources.Map token = 6;
   if (this->has_token()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1056,11 +873,17 @@ void MsgResources::MergeFrom(const MsgResources& from) {
 
     val_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.val_);
   }
+  if (from.sck() != 0) {
+    set_sck(from.sck());
+  }
+  if (from.dck() != 0) {
+    set_dck(from.dck());
+  }
   if (from.has_slot()) {
-    mutable_slot()->::PB_Eotq::MsgResources_Slot::MergeFrom(from.slot());
+    mutable_slot()->::PB_Eotq::MsgResources_Map::MergeFrom(from.slot());
   }
   if (from.has_token()) {
-    mutable_token()->::PB_Eotq::MsgResources_Token::MergeFrom(from.token());
+    mutable_token()->::PB_Eotq::MsgResources_Map::MergeFrom(from.token());
   }
 }
 
@@ -1088,6 +911,8 @@ void MsgResources::Swap(MsgResources* other) {
 void MsgResources::InternalSwap(MsgResources* other) {
   std::swap(from_, other->from_);
   val_.Swap(&other->val_);
+  std::swap(sck_, other->sck_);
+  std::swap(dck_, other->dck_);
   std::swap(slot_, other->slot_);
   std::swap(token_, other->token_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1103,152 +928,77 @@ void MsgResources::InternalSwap(MsgResources* other) {
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgResources_Slot
+// MsgResources_Map
 
 // optional uint32 sck = 1;
-void MsgResources_Slot::clear_sck() {
+void MsgResources_Map::clear_sck() {
   sck_ = 0u;
 }
- ::google::protobuf::uint32 MsgResources_Slot::sck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Slot.sck)
+ ::google::protobuf::uint32 MsgResources_Map::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.sck)
   return sck_;
 }
- void MsgResources_Slot::set_sck(::google::protobuf::uint32 value) {
+ void MsgResources_Map::set_sck(::google::protobuf::uint32 value) {
   
   sck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Slot.sck)
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.sck)
 }
 
 // optional uint32 dck = 2;
-void MsgResources_Slot::clear_dck() {
+void MsgResources_Map::clear_dck() {
   dck_ = 0u;
 }
- ::google::protobuf::uint32 MsgResources_Slot::dck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Slot.dck)
+ ::google::protobuf::uint32 MsgResources_Map::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.dck)
   return dck_;
 }
- void MsgResources_Slot::set_dck(::google::protobuf::uint32 value) {
+ void MsgResources_Map::set_dck(::google::protobuf::uint32 value) {
   
   dck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Slot.dck)
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.dck)
 }
 
 // optional bytes val = 3;
-void MsgResources_Slot::clear_val() {
+void MsgResources_Map::clear_val() {
   val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- const ::std::string& MsgResources_Slot::val() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Slot.val)
+ const ::std::string& MsgResources_Map::val() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.val)
   return val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void MsgResources_Slot::set_val(const ::std::string& value) {
+ void MsgResources_Map::set_val(const ::std::string& value) {
   
   val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.val)
 }
- void MsgResources_Slot::set_val(const char* value) {
+ void MsgResources_Map::set_val(const char* value) {
   
   val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_set_char:PB_Eotq.MsgResources.Map.val)
 }
- void MsgResources_Slot::set_val(const void* value, size_t size) {
+ void MsgResources_Map::set_val(const void* value, size_t size) {
   
   val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.MsgResources.Map.val)
 }
- ::std::string* MsgResources_Slot::mutable_val() {
+ ::std::string* MsgResources_Map::mutable_val() {
   
-  // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.Slot.val)
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.Map.val)
   return val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- ::std::string* MsgResources_Slot::release_val() {
+ ::std::string* MsgResources_Map::release_val() {
   
   return val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
- void MsgResources_Slot::set_allocated_val(::std::string* val) {
+ void MsgResources_Map::set_allocated_val(::std::string* val) {
   if (val != NULL) {
     
   } else {
     
   }
   val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), val);
-  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.Slot.val)
-}
-
-// -------------------------------------------------------------------
-
-// MsgResources_Token
-
-// optional uint32 sck = 1;
-void MsgResources_Token::clear_sck() {
-  sck_ = 0u;
-}
- ::google::protobuf::uint32 MsgResources_Token::sck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Token.sck)
-  return sck_;
-}
- void MsgResources_Token::set_sck(::google::protobuf::uint32 value) {
-  
-  sck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Token.sck)
-}
-
-// optional uint32 dck = 2;
-void MsgResources_Token::clear_dck() {
-  dck_ = 0u;
-}
- ::google::protobuf::uint32 MsgResources_Token::dck() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Token.dck)
-  return dck_;
-}
- void MsgResources_Token::set_dck(::google::protobuf::uint32 value) {
-  
-  dck_ = value;
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Token.dck)
-}
-
-// optional bytes val = 3;
-void MsgResources_Token::clear_val() {
-  val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- const ::std::string& MsgResources_Token::val() const {
-  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Token.val)
-  return val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgResources_Token::set_val(const ::std::string& value) {
-  
-  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Token.val)
-}
- void MsgResources_Token::set_val(const char* value) {
-  
-  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PB_Eotq.MsgResources.Token.val)
-}
- void MsgResources_Token::set_val(const void* value, size_t size) {
-  
-  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.MsgResources.Token.val)
-}
- ::std::string* MsgResources_Token::mutable_val() {
-  
-  // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.Token.val)
-  return val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgResources_Token::release_val() {
-  
-  return val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgResources_Token::set_allocated_val(::std::string* val) {
-  if (val != NULL) {
-    
-  } else {
-    
-  }
-  val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), val);
-  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.Token.val)
+  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.Map.val)
 }
 
 // -------------------------------------------------------------------
@@ -1312,7 +1062,35 @@ void MsgResources::clear_val() {
   // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.val)
 }
 
-// optional .PB_Eotq.MsgResources.Slot slot = 3;
+// optional uint64 sck = 3;
+void MsgResources::clear_sck() {
+  sck_ = GOOGLE_ULONGLONG(0);
+}
+ ::google::protobuf::uint64 MsgResources::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.sck)
+  return sck_;
+}
+ void MsgResources::set_sck(::google::protobuf::uint64 value) {
+  
+  sck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.sck)
+}
+
+// optional uint64 dck = 4;
+void MsgResources::clear_dck() {
+  dck_ = GOOGLE_ULONGLONG(0);
+}
+ ::google::protobuf::uint64 MsgResources::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.dck)
+  return dck_;
+}
+ void MsgResources::set_dck(::google::protobuf::uint64 value) {
+  
+  dck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.dck)
+}
+
+// optional .PB_Eotq.MsgResources.Map slot = 5;
 bool MsgResources::has_slot() const {
   return !_is_default_instance_ && slot_ != NULL;
 }
@@ -1320,25 +1098,25 @@ void MsgResources::clear_slot() {
   if (GetArenaNoVirtual() == NULL && slot_ != NULL) delete slot_;
   slot_ = NULL;
 }
-const ::PB_Eotq::MsgResources_Slot& MsgResources::slot() const {
+const ::PB_Eotq::MsgResources_Map& MsgResources::slot() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.slot)
   return slot_ != NULL ? *slot_ : *default_instance_->slot_;
 }
-::PB_Eotq::MsgResources_Slot* MsgResources::mutable_slot() {
+::PB_Eotq::MsgResources_Map* MsgResources::mutable_slot() {
   
   if (slot_ == NULL) {
-    slot_ = new ::PB_Eotq::MsgResources_Slot;
+    slot_ = new ::PB_Eotq::MsgResources_Map;
   }
   // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.slot)
   return slot_;
 }
-::PB_Eotq::MsgResources_Slot* MsgResources::release_slot() {
+::PB_Eotq::MsgResources_Map* MsgResources::release_slot() {
   
-  ::PB_Eotq::MsgResources_Slot* temp = slot_;
+  ::PB_Eotq::MsgResources_Map* temp = slot_;
   slot_ = NULL;
   return temp;
 }
-void MsgResources::set_allocated_slot(::PB_Eotq::MsgResources_Slot* slot) {
+void MsgResources::set_allocated_slot(::PB_Eotq::MsgResources_Map* slot) {
   delete slot_;
   slot_ = slot;
   if (slot) {
@@ -1349,7 +1127,7 @@ void MsgResources::set_allocated_slot(::PB_Eotq::MsgResources_Slot* slot) {
   // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.slot)
 }
 
-// optional .PB_Eotq.MsgResources.Token token = 4;
+// optional .PB_Eotq.MsgResources.Map token = 6;
 bool MsgResources::has_token() const {
   return !_is_default_instance_ && token_ != NULL;
 }
@@ -1357,25 +1135,25 @@ void MsgResources::clear_token() {
   if (GetArenaNoVirtual() == NULL && token_ != NULL) delete token_;
   token_ = NULL;
 }
-const ::PB_Eotq::MsgResources_Token& MsgResources::token() const {
+const ::PB_Eotq::MsgResources_Map& MsgResources::token() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.token)
   return token_ != NULL ? *token_ : *default_instance_->token_;
 }
-::PB_Eotq::MsgResources_Token* MsgResources::mutable_token() {
+::PB_Eotq::MsgResources_Map* MsgResources::mutable_token() {
   
   if (token_ == NULL) {
-    token_ = new ::PB_Eotq::MsgResources_Token;
+    token_ = new ::PB_Eotq::MsgResources_Map;
   }
   // @@protoc_insertion_point(field_mutable:PB_Eotq.MsgResources.token)
   return token_;
 }
-::PB_Eotq::MsgResources_Token* MsgResources::release_token() {
+::PB_Eotq::MsgResources_Map* MsgResources::release_token() {
   
-  ::PB_Eotq::MsgResources_Token* temp = token_;
+  ::PB_Eotq::MsgResources_Map* temp = token_;
   token_ = NULL;
   return temp;
 }
-void MsgResources::set_allocated_token(::PB_Eotq::MsgResources_Token* token) {
+void MsgResources::set_allocated_token(::PB_Eotq::MsgResources_Map* token) {
   delete token_;
   token_ = token;
   if (token) {
@@ -1384,6 +1162,1071 @@ void MsgResources::set_allocated_token(::PB_Eotq::MsgResources_Token* token) {
     
   }
   // @@protoc_insertion_point(field_set_allocated:PB_Eotq.MsgResources.token)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int Node_Map::kIdFieldNumber;
+const int Node_Map::kSckFieldNumber;
+const int Node_Map::kDckFieldNumber;
+const int Node_Map::kValFieldNumber;
+#endif  // !_MSC_VER
+
+Node_Map::Node_Map()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PB_Eotq.Node.Map)
+}
+
+void Node_Map::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+Node_Map::Node_Map(const Node_Map& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:PB_Eotq.Node.Map)
+}
+
+void Node_Map::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  id_ = 0u;
+  sck_ = 0u;
+  dck_ = 0u;
+  val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+Node_Map::~Node_Map() {
+  // @@protoc_insertion_point(destructor:PB_Eotq.Node.Map)
+  SharedDtor();
+}
+
+void Node_Map::SharedDtor() {
+  val_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void Node_Map::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Node_Map::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Node_Map_descriptor_;
+}
+
+const Node_Map& Node_Map::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_PB_5fEotq_2eproto3();
+  return *default_instance_;
+}
+
+Node_Map* Node_Map::default_instance_ = NULL;
+
+Node_Map* Node_Map::New(::google::protobuf::Arena* arena) const {
+  Node_Map* n = new Node_Map;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void Node_Map::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<Node_Map*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(id_, sck_);
+  dck_ = 0u;
+  val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool Node_Map::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:PB_Eotq.Node.Map)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_sck;
+        break;
+      }
+
+      // optional uint32 sck = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_sck:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &sck_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_dck;
+        break;
+      }
+
+      // optional uint32 dck = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_dck:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &dck_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_val;
+        break;
+      }
+
+      // optional bytes val = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_val:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_val()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:PB_Eotq.Node.Map)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:PB_Eotq.Node.Map)
+  return false;
+#undef DO_
+}
+
+void Node_Map::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:PB_Eotq.Node.Map)
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  }
+
+  // optional uint32 sck = 2;
+  if (this->sck() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->sck(), output);
+  }
+
+  // optional uint32 dck = 3;
+  if (this->dck() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->dck(), output);
+  }
+
+  // optional bytes val = 4;
+  if (this->val().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      4, this->val(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:PB_Eotq.Node.Map)
+}
+
+::google::protobuf::uint8* Node_Map::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PB_Eotq.Node.Map)
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  }
+
+  // optional uint32 sck = 2;
+  if (this->sck() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->sck(), target);
+  }
+
+  // optional uint32 dck = 3;
+  if (this->dck() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->dck(), target);
+  }
+
+  // optional bytes val = 4;
+  if (this->val().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        4, this->val(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:PB_Eotq.Node.Map)
+  return target;
+}
+
+int Node_Map::ByteSize() const {
+  int total_size = 0;
+
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->id());
+  }
+
+  // optional uint32 sck = 2;
+  if (this->sck() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->sck());
+  }
+
+  // optional uint32 dck = 3;
+  if (this->dck() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->dck());
+  }
+
+  // optional bytes val = 4;
+  if (this->val().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->val());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Node_Map::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const Node_Map* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const Node_Map>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Node_Map::MergeFrom(const Node_Map& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.id() != 0) {
+    set_id(from.id());
+  }
+  if (from.sck() != 0) {
+    set_sck(from.sck());
+  }
+  if (from.dck() != 0) {
+    set_dck(from.dck());
+  }
+  if (from.val().size() > 0) {
+
+    val_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.val_);
+  }
+}
+
+void Node_Map::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Node_Map::CopyFrom(const Node_Map& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Node_Map::IsInitialized() const {
+
+  return true;
+}
+
+void Node_Map::Swap(Node_Map* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Node_Map::InternalSwap(Node_Map* other) {
+  std::swap(id_, other->id_);
+  std::swap(sck_, other->sck_);
+  std::swap(dck_, other->dck_);
+  val_.Swap(&other->val_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Node_Map::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Node_Map_descriptor_;
+  metadata.reflection = Node_Map_reflection_;
+  return metadata;
+}
+
+
+// -------------------------------------------------------------------
+
+#ifndef _MSC_VER
+const int Node::kIdFieldNumber;
+const int Node::kSckFieldNumber;
+const int Node::kDckFieldNumber;
+const int Node::kIpAddrFieldNumber;
+const int Node::kPortFieldNumber;
+const int Node::kSlotsFieldNumber;
+const int Node::kTokensFieldNumber;
+#endif  // !_MSC_VER
+
+Node::Node()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PB_Eotq.Node)
+}
+
+void Node::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+Node::Node(const Node& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:PB_Eotq.Node)
+}
+
+void Node::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  id_ = 0u;
+  sck_ = 0u;
+  dck_ = 0u;
+  ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  port_ = 0u;
+}
+
+Node::~Node() {
+  // @@protoc_insertion_point(destructor:PB_Eotq.Node)
+  SharedDtor();
+}
+
+void Node::SharedDtor() {
+  ip_addr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void Node::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Node::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Node_descriptor_;
+}
+
+const Node& Node::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_PB_5fEotq_2eproto3();
+  return *default_instance_;
+}
+
+Node* Node::default_instance_ = NULL;
+
+Node* Node::New(::google::protobuf::Arena* arena) const {
+  Node* n = new Node;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void Node::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<Node*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(id_, sck_);
+  ZR_(dck_, port_);
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  slots_.Clear();
+  tokens_.Clear();
+}
+
+bool Node::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:PB_Eotq.Node)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_sck;
+        break;
+      }
+
+      // optional uint32 sck = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_sck:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &sck_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_dck;
+        break;
+      }
+
+      // optional uint32 dck = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_dck:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &dck_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_ip_addr;
+        break;
+      }
+
+      // optional string ip_addr = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_ip_addr:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ip_addr()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->ip_addr().data(), this->ip_addr().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "PB_Eotq.Node.ip_addr"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_port;
+        break;
+      }
+
+      // optional uint32 port = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_port:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &port_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_slots;
+        break;
+      }
+
+      // repeated .PB_Eotq.Node.Map slots = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_slots:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_slots:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_slots()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_loop_slots;
+        if (input->ExpectTag(58)) goto parse_loop_tokens;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .PB_Eotq.Node.Map tokens = 7;
+      case 7: {
+        if (tag == 58) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_tokens:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_tokens()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_loop_tokens;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:PB_Eotq.Node)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:PB_Eotq.Node)
+  return false;
+#undef DO_
+}
+
+void Node::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:PB_Eotq.Node)
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  }
+
+  // optional uint32 sck = 2;
+  if (this->sck() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->sck(), output);
+  }
+
+  // optional uint32 dck = 3;
+  if (this->dck() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->dck(), output);
+  }
+
+  // optional string ip_addr = 4;
+  if (this->ip_addr().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_addr().data(), this->ip_addr().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "PB_Eotq.Node.ip_addr");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->ip_addr(), output);
+  }
+
+  // optional uint32 port = 5;
+  if (this->port() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->port(), output);
+  }
+
+  // repeated .PB_Eotq.Node.Map slots = 6;
+  for (unsigned int i = 0, n = this->slots_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->slots(i), output);
+  }
+
+  // repeated .PB_Eotq.Node.Map tokens = 7;
+  for (unsigned int i = 0, n = this->tokens_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->tokens(i), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:PB_Eotq.Node)
+}
+
+::google::protobuf::uint8* Node::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PB_Eotq.Node)
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  }
+
+  // optional uint32 sck = 2;
+  if (this->sck() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->sck(), target);
+  }
+
+  // optional uint32 dck = 3;
+  if (this->dck() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->dck(), target);
+  }
+
+  // optional string ip_addr = 4;
+  if (this->ip_addr().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip_addr().data(), this->ip_addr().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "PB_Eotq.Node.ip_addr");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->ip_addr(), target);
+  }
+
+  // optional uint32 port = 5;
+  if (this->port() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->port(), target);
+  }
+
+  // repeated .PB_Eotq.Node.Map slots = 6;
+  for (unsigned int i = 0, n = this->slots_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->slots(i), target);
+  }
+
+  // repeated .PB_Eotq.Node.Map tokens = 7;
+  for (unsigned int i = 0, n = this->tokens_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->tokens(i), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:PB_Eotq.Node)
+  return target;
+}
+
+int Node::ByteSize() const {
+  int total_size = 0;
+
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->id());
+  }
+
+  // optional uint32 sck = 2;
+  if (this->sck() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->sck());
+  }
+
+  // optional uint32 dck = 3;
+  if (this->dck() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->dck());
+  }
+
+  // optional string ip_addr = 4;
+  if (this->ip_addr().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->ip_addr());
+  }
+
+  // optional uint32 port = 5;
+  if (this->port() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->port());
+  }
+
+  // repeated .PB_Eotq.Node.Map slots = 6;
+  total_size += 1 * this->slots_size();
+  for (int i = 0; i < this->slots_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->slots(i));
+  }
+
+  // repeated .PB_Eotq.Node.Map tokens = 7;
+  total_size += 1 * this->tokens_size();
+  for (int i = 0; i < this->tokens_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->tokens(i));
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Node::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const Node* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const Node>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Node::MergeFrom(const Node& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  slots_.MergeFrom(from.slots_);
+  tokens_.MergeFrom(from.tokens_);
+  if (from.id() != 0) {
+    set_id(from.id());
+  }
+  if (from.sck() != 0) {
+    set_sck(from.sck());
+  }
+  if (from.dck() != 0) {
+    set_dck(from.dck());
+  }
+  if (from.ip_addr().size() > 0) {
+
+    ip_addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_addr_);
+  }
+  if (from.port() != 0) {
+    set_port(from.port());
+  }
+}
+
+void Node::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Node::CopyFrom(const Node& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Node::IsInitialized() const {
+
+  return true;
+}
+
+void Node::Swap(Node* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Node::InternalSwap(Node* other) {
+  std::swap(id_, other->id_);
+  std::swap(sck_, other->sck_);
+  std::swap(dck_, other->dck_);
+  ip_addr_.Swap(&other->ip_addr_);
+  std::swap(port_, other->port_);
+  slots_.UnsafeArenaSwap(&other->slots_);
+  tokens_.UnsafeArenaSwap(&other->tokens_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Node::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Node_descriptor_;
+  metadata.reflection = Node_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// Node_Map
+
+// optional uint32 id = 1;
+void Node_Map::clear_id() {
+  id_ = 0u;
+}
+ ::google::protobuf::uint32 Node_Map::id() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.id)
+  return id_;
+}
+ void Node_Map::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.id)
+}
+
+// optional uint32 sck = 2;
+void Node_Map::clear_sck() {
+  sck_ = 0u;
+}
+ ::google::protobuf::uint32 Node_Map::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.sck)
+  return sck_;
+}
+ void Node_Map::set_sck(::google::protobuf::uint32 value) {
+  
+  sck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.sck)
+}
+
+// optional uint32 dck = 3;
+void Node_Map::clear_dck() {
+  dck_ = 0u;
+}
+ ::google::protobuf::uint32 Node_Map::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.dck)
+  return dck_;
+}
+ void Node_Map::set_dck(::google::protobuf::uint32 value) {
+  
+  dck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.dck)
+}
+
+// optional bytes val = 4;
+void Node_Map::clear_val() {
+  val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& Node_Map::val() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.val)
+  return val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void Node_Map::set_val(const ::std::string& value) {
+  
+  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.val)
+}
+ void Node_Map::set_val(const char* value) {
+  
+  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PB_Eotq.Node.Map.val)
+}
+ void Node_Map::set_val(const void* value, size_t size) {
+  
+  val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.Node.Map.val)
+}
+ ::std::string* Node_Map::mutable_val() {
+  
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.Map.val)
+  return val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* Node_Map::release_val() {
+  
+  return val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void Node_Map::set_allocated_val(::std::string* val) {
+  if (val != NULL) {
+    
+  } else {
+    
+  }
+  val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), val);
+  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.Node.Map.val)
+}
+
+// -------------------------------------------------------------------
+
+// Node
+
+// optional uint32 id = 1;
+void Node::clear_id() {
+  id_ = 0u;
+}
+ ::google::protobuf::uint32 Node::id() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.id)
+  return id_;
+}
+ void Node::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.id)
+}
+
+// optional uint32 sck = 2;
+void Node::clear_sck() {
+  sck_ = 0u;
+}
+ ::google::protobuf::uint32 Node::sck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.sck)
+  return sck_;
+}
+ void Node::set_sck(::google::protobuf::uint32 value) {
+  
+  sck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.sck)
+}
+
+// optional uint32 dck = 3;
+void Node::clear_dck() {
+  dck_ = 0u;
+}
+ ::google::protobuf::uint32 Node::dck() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.dck)
+  return dck_;
+}
+ void Node::set_dck(::google::protobuf::uint32 value) {
+  
+  dck_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.dck)
+}
+
+// optional string ip_addr = 4;
+void Node::clear_ip_addr() {
+  ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& Node::ip_addr() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.ip_addr)
+  return ip_addr_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void Node::set_ip_addr(const ::std::string& value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.ip_addr)
+}
+ void Node::set_ip_addr(const char* value) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PB_Eotq.Node.ip_addr)
+}
+ void Node::set_ip_addr(const char* value, size_t size) {
+  
+  ip_addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PB_Eotq.Node.ip_addr)
+}
+ ::std::string* Node::mutable_ip_addr() {
+  
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.ip_addr)
+  return ip_addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* Node::release_ip_addr() {
+  
+  return ip_addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void Node::set_allocated_ip_addr(::std::string* ip_addr) {
+  if (ip_addr != NULL) {
+    
+  } else {
+    
+  }
+  ip_addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip_addr);
+  // @@protoc_insertion_point(field_set_allocated:PB_Eotq.Node.ip_addr)
+}
+
+// optional uint32 port = 5;
+void Node::clear_port() {
+  port_ = 0u;
+}
+ ::google::protobuf::uint32 Node::port() const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.port)
+  return port_;
+}
+ void Node::set_port(::google::protobuf::uint32 value) {
+  
+  port_ = value;
+  // @@protoc_insertion_point(field_set:PB_Eotq.Node.port)
+}
+
+// repeated .PB_Eotq.Node.Map slots = 6;
+int Node::slots_size() const {
+  return slots_.size();
+}
+void Node::clear_slots() {
+  slots_.Clear();
+}
+const ::PB_Eotq::Node_Map& Node::slots(int index) const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.slots)
+  return slots_.Get(index);
+}
+::PB_Eotq::Node_Map* Node::mutable_slots(int index) {
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.slots)
+  return slots_.Mutable(index);
+}
+::PB_Eotq::Node_Map* Node::add_slots() {
+  // @@protoc_insertion_point(field_add:PB_Eotq.Node.slots)
+  return slots_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >*
+Node::mutable_slots() {
+  // @@protoc_insertion_point(field_mutable_list:PB_Eotq.Node.slots)
+  return &slots_;
+}
+const ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >&
+Node::slots() const {
+  // @@protoc_insertion_point(field_list:PB_Eotq.Node.slots)
+  return slots_;
+}
+
+// repeated .PB_Eotq.Node.Map tokens = 7;
+int Node::tokens_size() const {
+  return tokens_.size();
+}
+void Node::clear_tokens() {
+  tokens_.Clear();
+}
+const ::PB_Eotq::Node_Map& Node::tokens(int index) const {
+  // @@protoc_insertion_point(field_get:PB_Eotq.Node.tokens)
+  return tokens_.Get(index);
+}
+::PB_Eotq::Node_Map* Node::mutable_tokens(int index) {
+  // @@protoc_insertion_point(field_mutable:PB_Eotq.Node.tokens)
+  return tokens_.Mutable(index);
+}
+::PB_Eotq::Node_Map* Node::add_tokens() {
+  // @@protoc_insertion_point(field_add:PB_Eotq.Node.tokens)
+  return tokens_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >*
+Node::mutable_tokens() {
+  // @@protoc_insertion_point(field_mutable_list:PB_Eotq.Node.tokens)
+  return &tokens_;
+}
+const ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map >&
+Node::tokens() const {
+  // @@protoc_insertion_point(field_list:PB_Eotq.Node.tokens)
+  return tokens_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

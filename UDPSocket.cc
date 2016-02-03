@@ -12,10 +12,6 @@
  */
 
 #include "UDPSocket.h"
-#include <cstring>
-/* includes for socket communication */
-#include <sys/socket.h>
-#include <arpa/inet.h>
 
 /* ::: IPv4 ::: 
 struct sockaddr_in {
@@ -62,7 +58,7 @@ Message* UDPSocket::listenMessage() {
     int recvlen = recvfrom(sock_desc, buffer, MAX_BUFSIZE, 0, (struct sockaddr *) &r_addr, &r_sock_len);
     if (recvlen > 0) {
         buffer[recvlen] = '\0';
-        std::cout << "UDP_RAW_MSG_RECV: " << buffer << std::endl;
+        //std::cout << "UDP_RAW_MSG_RECV: " << buffer << std::endl;
         
         /* Unmarshalling msg */
         PB_Eotq::MsgResources msg;
@@ -79,14 +75,25 @@ Message* UDPSocket::listenMessage() {
     return NULL;
 }
 
-bool UDPSocket::sendMessage(std::string m, struct sockaddr_in r_addr) {
-    std::string msg = m;
+bool UDPSocket::sendMessage(Message &msg, struct sockaddr_in r_addr) {
     socklen_t r_sock_len = sizeof(r_addr);
-    if (sendto(sock_desc, msg.c_str(), strlen(msg.c_str())+1, 0, (struct sockaddr *) &r_addr, r_sock_len) == -1) {
+
+    google::protobuf::io::ArrayOutputStream arr(buffer, sizeof(buffer));
+    google::protobuf::io::CodedOutputStream output(&arr);
+    
+    output.WriteVarint32(msg.getByteSize());
+    msg.setCodedStream(&output);
+    if ( sendto(sock_desc, (char*)buffer, output.ByteCount(), 0, (struct sockaddr *) &r_addr, r_sock_len) == -1 ) {
         std::cout << "[ERROR]: sending to" << std::endl;
         return false;
     }
     return true;
+}
+
+void 
+UDPSocket::closeSocket()
+{
+    close(sock_desc);
 }
 
 struct sockaddr_in UDPSocket::convertIP(std::string& ip_addr, int& p){
