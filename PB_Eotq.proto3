@@ -10,8 +10,8 @@ message MsgResources {
 
 
     message Map {
-        uint32 sck =1;
-        uint32 dck =2;
+        uint64 sck =1;
+        uint64 dck =2;
         bytes  val =3;
     }
 
@@ -23,15 +23,15 @@ message MsgResources {
 
 message Node {
     uint32 id  = 1;
-    uint32 sck = 2;
-    uint32 dck = 3;
+    uint64 sck = 2;
+    uint64 dck = 3;
     string ip_addr = 4;
     uint32 port = 5;
 
     message Map {
         uint32 id  =1;
-        uint32 sck =2;
-        uint32 dck =3;
+        uint64 sck =2;
+        uint64 dck =3;
         bytes  val =4;
     }
     

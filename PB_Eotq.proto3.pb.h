@@ -99,17 +99,17 @@ class MsgResources_Map : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 sck = 1;
+  // optional uint64 sck = 1;
   void clear_sck();
   static const int kSckFieldNumber = 1;
-  ::google::protobuf::uint32 sck() const;
-  void set_sck(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 sck() const;
+  void set_sck(::google::protobuf::uint64 value);
 
-  // optional uint32 dck = 2;
+  // optional uint64 dck = 2;
   void clear_dck();
   static const int kDckFieldNumber = 2;
-  ::google::protobuf::uint32 dck() const;
-  void set_dck(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dck() const;
+  void set_dck(::google::protobuf::uint64 value);
 
   // optional bytes val = 3;
   void clear_val();
@@ -127,8 +127,8 @@ class MsgResources_Map : public ::google::protobuf::Message {
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::uint32 sck_;
-  ::google::protobuf::uint32 dck_;
+  ::google::protobuf::uint64 sck_;
+  ::google::protobuf::uint64 dck_;
   ::google::protobuf::internal::ArenaStringPtr val_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_PB_5fEotq_2eproto3();
@@ -328,17 +328,17 @@ class Node_Map : public ::google::protobuf::Message {
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   void clear_sck();
   static const int kSckFieldNumber = 2;
-  ::google::protobuf::uint32 sck() const;
-  void set_sck(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 sck() const;
+  void set_sck(::google::protobuf::uint64 value);
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   void clear_dck();
   static const int kDckFieldNumber = 3;
-  ::google::protobuf::uint32 dck() const;
-  void set_dck(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dck() const;
+  void set_dck(::google::protobuf::uint64 value);
 
   // optional bytes val = 4;
   void clear_val();
@@ -356,10 +356,10 @@ class Node_Map : public ::google::protobuf::Message {
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::uint32 id_;
-  ::google::protobuf::uint32 sck_;
+  ::google::protobuf::uint64 sck_;
+  ::google::protobuf::uint64 dck_;
   ::google::protobuf::internal::ArenaStringPtr val_;
-  ::google::protobuf::uint32 dck_;
+  ::google::protobuf::uint32 id_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_PB_5fEotq_2eproto3();
   friend void protobuf_AssignDesc_PB_5fEotq_2eproto3();
@@ -434,17 +434,17 @@ class Node : public ::google::protobuf::Message {
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   void clear_sck();
   static const int kSckFieldNumber = 2;
-  ::google::protobuf::uint32 sck() const;
-  void set_sck(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 sck() const;
+  void set_sck(::google::protobuf::uint64 value);
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   void clear_dck();
   static const int kDckFieldNumber = 3;
-  ::google::protobuf::uint32 dck() const;
-  void set_dck(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 dck() const;
+  void set_dck(::google::protobuf::uint64 value);
 
   // optional string ip_addr = 4;
   void clear_ip_addr();
@@ -492,11 +492,11 @@ class Node : public ::google::protobuf::Message {
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
+  ::google::protobuf::uint64 sck_;
+  ::google::protobuf::uint64 dck_;
   ::google::protobuf::uint32 id_;
-  ::google::protobuf::uint32 sck_;
-  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
-  ::google::protobuf::uint32 dck_;
   ::google::protobuf::uint32 port_;
+  ::google::protobuf::internal::ArenaStringPtr ip_addr_;
   ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map > slots_;
   ::google::protobuf::RepeatedPtrField< ::PB_Eotq::Node_Map > tokens_;
   mutable int _cached_size_;
@@ -515,29 +515,29 @@ class Node : public ::google::protobuf::Message {
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgResources_Map
 
-// optional uint32 sck = 1;
+// optional uint64 sck = 1;
 inline void MsgResources_Map::clear_sck() {
-  sck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 MsgResources_Map::sck() const {
+inline ::google::protobuf::uint64 MsgResources_Map::sck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.sck)
   return sck_;
 }
-inline void MsgResources_Map::set_sck(::google::protobuf::uint32 value) {
+inline void MsgResources_Map::set_sck(::google::protobuf::uint64 value) {
   
   sck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.sck)
 }
 
-// optional uint32 dck = 2;
+// optional uint64 dck = 2;
 inline void MsgResources_Map::clear_dck() {
-  dck_ = 0u;
+  dck_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 MsgResources_Map::dck() const {
+inline ::google::protobuf::uint64 MsgResources_Map::dck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.dck)
   return dck_;
 }
-inline void MsgResources_Map::set_dck(::google::protobuf::uint32 value) {
+inline void MsgResources_Map::set_dck(::google::protobuf::uint64 value) {
   
   dck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.dck)
@@ -767,29 +767,29 @@ inline void Node_Map::set_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.id)
 }
 
-// optional uint32 sck = 2;
+// optional uint64 sck = 2;
 inline void Node_Map::clear_sck() {
-  sck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Node_Map::sck() const {
+inline ::google::protobuf::uint64 Node_Map::sck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.sck)
   return sck_;
 }
-inline void Node_Map::set_sck(::google::protobuf::uint32 value) {
+inline void Node_Map::set_sck(::google::protobuf::uint64 value) {
   
   sck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.sck)
 }
 
-// optional uint32 dck = 3;
+// optional uint64 dck = 3;
 inline void Node_Map::clear_dck() {
-  dck_ = 0u;
+  dck_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Node_Map::dck() const {
+inline ::google::protobuf::uint64 Node_Map::dck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.dck)
   return dck_;
 }
-inline void Node_Map::set_dck(::google::protobuf::uint32 value) {
+inline void Node_Map::set_dck(::google::protobuf::uint64 value) {
   
   dck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.dck)
@@ -856,29 +856,29 @@ inline void Node::set_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.id)
 }
 
-// optional uint32 sck = 2;
+// optional uint64 sck = 2;
 inline void Node::clear_sck() {
-  sck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Node::sck() const {
+inline ::google::protobuf::uint64 Node::sck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.sck)
   return sck_;
 }
-inline void Node::set_sck(::google::protobuf::uint32 value) {
+inline void Node::set_sck(::google::protobuf::uint64 value) {
   
   sck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.sck)
 }
 
-// optional uint32 dck = 3;
+// optional uint64 dck = 3;
 inline void Node::clear_dck() {
-  dck_ = 0u;
+  dck_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 Node::dck() const {
+inline ::google::protobuf::uint64 Node::dck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.dck)
   return dck_;
 }
-inline void Node::set_dck(::google::protobuf::uint32 value) {
+inline void Node::set_dck(::google::protobuf::uint64 value) {
   
   dck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.dck)

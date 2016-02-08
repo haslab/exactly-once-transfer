@@ -164,13 +164,13 @@ void protobuf_AddDesc_PB_5fEotq_2eproto3() {
     "es\022\014\n\004from\030\001 \001(\r\022\013\n\003val\030\002 \001(\014\022\013\n\003sck\030\003 \001"
     "(\004\022\013\n\003dck\030\004 \001(\004\022\'\n\004slot\030\005 \001(\0132\031.PB_Eotq."
     "MsgResources.Map\022(\n\005token\030\006 \001(\0132\031.PB_Eot"
-    "q.MsgResources.Map\032,\n\003Map\022\013\n\003sck\030\001 \001(\r\022\013"
-    "\n\003dck\030\002 \001(\r\022\013\n\003val\030\003 \001(\014\"\312\001\n\004Node\022\n\n\002id\030"
-    "\001 \001(\r\022\013\n\003sck\030\002 \001(\r\022\013\n\003dck\030\003 \001(\r\022\017\n\007ip_ad"
+    "q.MsgResources.Map\032,\n\003Map\022\013\n\003sck\030\001 \001(\004\022\013"
+    "\n\003dck\030\002 \001(\004\022\013\n\003val\030\003 \001(\014\"\312\001\n\004Node\022\n\n\002id\030"
+    "\001 \001(\r\022\013\n\003sck\030\002 \001(\004\022\013\n\003dck\030\003 \001(\004\022\017\n\007ip_ad"
     "dr\030\004 \001(\t\022\014\n\004port\030\005 \001(\r\022 \n\005slots\030\006 \003(\0132\021."
     "PB_Eotq.Node.Map\022!\n\006tokens\030\007 \003(\0132\021.PB_Eo"
     "tq.Node.Map\0328\n\003Map\022\n\n\002id\030\001 \001(\r\022\013\n\003sck\030\002 "
-    "\001(\r\022\013\n\003dck\030\003 \001(\r\022\013\n\003val\030\004 \001(\014b\006proto3", 437);
+    "\001(\004\022\013\n\003dck\030\003 \001(\004\022\013\n\003val\030\004 \001(\014b\006proto3", 437);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PB_Eotq.proto3", &protobuf_RegisterTypes);
   MsgResources::default_instance_ = new MsgResources();
@@ -231,8 +231,8 @@ void MsgResources_Map::SharedCtor() {
     _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  sck_ = 0u;
-  dck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
+  dck_ = GOOGLE_ULONGLONG(0);
   val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -299,11 +299,11 @@ bool MsgResources_Map::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 sck = 1;
+      // optional uint64 sck = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &sck_)));
 
         } else {
@@ -313,12 +313,12 @@ bool MsgResources_Map::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 dck = 2;
+      // optional uint64 dck = 2;
       case 2: {
         if (tag == 16) {
          parse_dck:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &dck_)));
 
         } else {
@@ -365,14 +365,14 @@ failure:
 void MsgResources_Map::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:PB_Eotq.MsgResources.Map)
-  // optional uint32 sck = 1;
+  // optional uint64 sck = 1;
   if (this->sck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->sck(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->sck(), output);
   }
 
-  // optional uint32 dck = 2;
+  // optional uint64 dck = 2;
   if (this->dck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->dck(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->dck(), output);
   }
 
   // optional bytes val = 3;
@@ -387,14 +387,14 @@ void MsgResources_Map::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgResources_Map::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:PB_Eotq.MsgResources.Map)
-  // optional uint32 sck = 1;
+  // optional uint64 sck = 1;
   if (this->sck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->sck(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->sck(), target);
   }
 
-  // optional uint32 dck = 2;
+  // optional uint64 dck = 2;
   if (this->dck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->dck(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->dck(), target);
   }
 
   // optional bytes val = 3;
@@ -411,17 +411,17 @@ void MsgResources_Map::SerializeWithCachedSizes(
 int MsgResources_Map::ByteSize() const {
   int total_size = 0;
 
-  // optional uint32 sck = 1;
+  // optional uint64 sck = 1;
   if (this->sck() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->sck());
   }
 
-  // optional uint32 dck = 2;
+  // optional uint64 dck = 2;
   if (this->dck() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->dck());
   }
 
@@ -930,29 +930,29 @@ void MsgResources::InternalSwap(MsgResources* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgResources_Map
 
-// optional uint32 sck = 1;
+// optional uint64 sck = 1;
 void MsgResources_Map::clear_sck() {
-  sck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 MsgResources_Map::sck() const {
+ ::google::protobuf::uint64 MsgResources_Map::sck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.sck)
   return sck_;
 }
- void MsgResources_Map::set_sck(::google::protobuf::uint32 value) {
+ void MsgResources_Map::set_sck(::google::protobuf::uint64 value) {
   
   sck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.sck)
 }
 
-// optional uint32 dck = 2;
+// optional uint64 dck = 2;
 void MsgResources_Map::clear_dck() {
-  dck_ = 0u;
+  dck_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 MsgResources_Map::dck() const {
+ ::google::protobuf::uint64 MsgResources_Map::dck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.MsgResources.Map.dck)
   return dck_;
 }
- void MsgResources_Map::set_dck(::google::protobuf::uint32 value) {
+ void MsgResources_Map::set_dck(::google::protobuf::uint64 value) {
   
   dck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.MsgResources.Map.dck)
@@ -1198,8 +1198,8 @@ void Node_Map::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   id_ = 0u;
-  sck_ = 0u;
-  dck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
+  dck_ = GOOGLE_ULONGLONG(0);
   val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -1248,8 +1248,8 @@ void Node_Map::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(id_, sck_);
-  dck_ = 0u;
+  ZR_(sck_, dck_);
+  id_ = 0u;
   val_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 
 #undef ZR_HELPER_
@@ -1281,12 +1281,12 @@ bool Node_Map::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 sck = 2;
+      // optional uint64 sck = 2;
       case 2: {
         if (tag == 16) {
          parse_sck:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &sck_)));
 
         } else {
@@ -1296,12 +1296,12 @@ bool Node_Map::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 dck = 3;
+      // optional uint64 dck = 3;
       case 3: {
         if (tag == 24) {
          parse_dck:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &dck_)));
 
         } else {
@@ -1353,14 +1353,14 @@ void Node_Map::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
   }
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   if (this->sck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->sck(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->sck(), output);
   }
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   if (this->dck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->dck(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->dck(), output);
   }
 
   // optional bytes val = 4;
@@ -1380,14 +1380,14 @@ void Node_Map::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
   }
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   if (this->sck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->sck(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->sck(), target);
   }
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   if (this->dck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->dck(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->dck(), target);
   }
 
   // optional bytes val = 4;
@@ -1411,17 +1411,17 @@ int Node_Map::ByteSize() const {
         this->id());
   }
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   if (this->sck() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->sck());
   }
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   if (this->dck() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->dck());
   }
 
@@ -1541,8 +1541,8 @@ void Node::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   id_ = 0u;
-  sck_ = 0u;
-  dck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
+  dck_ = GOOGLE_ULONGLONG(0);
   ip_addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   port_ = 0u;
 }
@@ -1592,8 +1592,7 @@ void Node::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(id_, sck_);
-  ZR_(dck_, port_);
+  ZR_(sck_, port_);
   ip_addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 
 #undef ZR_HELPER_
@@ -1627,12 +1626,12 @@ bool Node::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 sck = 2;
+      // optional uint64 sck = 2;
       case 2: {
         if (tag == 16) {
          parse_sck:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &sck_)));
 
         } else {
@@ -1642,12 +1641,12 @@ bool Node::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint32 dck = 3;
+      // optional uint64 dck = 3;
       case 3: {
         if (tag == 24) {
          parse_dck:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &dck_)));
 
         } else {
@@ -1751,14 +1750,14 @@ void Node::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
   }
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   if (this->sck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->sck(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->sck(), output);
   }
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   if (this->dck() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->dck(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->dck(), output);
   }
 
   // optional string ip_addr = 4;
@@ -1799,14 +1798,14 @@ void Node::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
   }
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   if (this->sck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->sck(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->sck(), target);
   }
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   if (this->dck() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->dck(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->dck(), target);
   }
 
   // optional string ip_addr = 4;
@@ -1853,17 +1852,17 @@ int Node::ByteSize() const {
         this->id());
   }
 
-  // optional uint32 sck = 2;
+  // optional uint64 sck = 2;
   if (this->sck() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->sck());
   }
 
-  // optional uint32 dck = 3;
+  // optional uint64 dck = 3;
   if (this->dck() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->dck());
   }
 
@@ -1995,29 +1994,29 @@ void Node_Map::clear_id() {
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.id)
 }
 
-// optional uint32 sck = 2;
+// optional uint64 sck = 2;
 void Node_Map::clear_sck() {
-  sck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Node_Map::sck() const {
+ ::google::protobuf::uint64 Node_Map::sck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.sck)
   return sck_;
 }
- void Node_Map::set_sck(::google::protobuf::uint32 value) {
+ void Node_Map::set_sck(::google::protobuf::uint64 value) {
   
   sck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.sck)
 }
 
-// optional uint32 dck = 3;
+// optional uint64 dck = 3;
 void Node_Map::clear_dck() {
-  dck_ = 0u;
+  dck_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Node_Map::dck() const {
+ ::google::protobuf::uint64 Node_Map::dck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.Map.dck)
   return dck_;
 }
- void Node_Map::set_dck(::google::protobuf::uint32 value) {
+ void Node_Map::set_dck(::google::protobuf::uint64 value) {
   
   dck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.Map.dck)
@@ -2084,29 +2083,29 @@ void Node::clear_id() {
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.id)
 }
 
-// optional uint32 sck = 2;
+// optional uint64 sck = 2;
 void Node::clear_sck() {
-  sck_ = 0u;
+  sck_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Node::sck() const {
+ ::google::protobuf::uint64 Node::sck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.sck)
   return sck_;
 }
- void Node::set_sck(::google::protobuf::uint32 value) {
+ void Node::set_sck(::google::protobuf::uint64 value) {
   
   sck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.sck)
 }
 
-// optional uint32 dck = 3;
+// optional uint64 dck = 3;
 void Node::clear_dck() {
-  dck_ = 0u;
+  dck_ = GOOGLE_ULONGLONG(0);
 }
- ::google::protobuf::uint32 Node::dck() const {
+ ::google::protobuf::uint64 Node::dck() const {
   // @@protoc_insertion_point(field_get:PB_Eotq.Node.dck)
   return dck_;
 }
- void Node::set_dck(::google::protobuf::uint32 value) {
+ void Node::set_dck(::google::protobuf::uint64 value) {
   
   dck_ = value;
   // @@protoc_insertion_point(field_set:PB_Eotq.Node.dck)

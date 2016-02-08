@@ -70,6 +70,8 @@ public:
         dck = 0;
         port= p;
         
+        /* END Initialization */
+        
         /* Spawn listening thread */
         //boost::thread th_listen(startListening);
         //startListening();
@@ -105,10 +107,38 @@ public:
         }
         return output;
     }
+    
+    void fillSlots(Eotq<T> &j) 
+    {
+        typename map<int, pair<pair<int, int>, T > >::iterator its = slots.find(j.id);
+        typename map<int, pair<pair<int, int>, T > >::iterator itt;
+        pair<pair<int, int>, T> token;
+        pair<pair<int, int>, T> slot;
+
+        if ( its != slots.end() ) {
+            // j \in dom(slots_i)
+            slot=its->second;
+            itt=j.tokens.begin();
+            if ( itt != j.tokens.end() )
+            {
+                token=itt->second;
+                if ( token.first == slot.first ) {
+                    val = oplus(val, token.second);
+                    slots.erase(its);
+                }
+                else if ( itt->second.first.first > its->second.first.first )
+                    slots.erase(its);
+            }
+        }
+        //else:
+            //there's no corresponding slot_i for this token
+            //token to be removed in GCTokens
+            //need to check up on this later
+    }
 	
     void createSlot(Eotq<T> &j) 
     {
-        typename map < int, pair<pair<int, int>, T> >::iterator its = slots.find(id);
+        typename map < int, pair<pair<int, int>, T> >::iterator its = slots.find(j.id);
         
         if ( its == slots.end() )
         {
@@ -120,6 +150,7 @@ public:
                 dck++;
             }
         }
+        //else cout << "SLOT[" << j.id << "] already exists !!!" << endl;
     }
     
     void startListening() 
@@ -131,12 +162,10 @@ public:
             if (udp.bindSocket("", port)) {
                 cout << "[SUCCESS]: Binded on port " << port << endl;
                 for (;;) {
+                    cout << "Waiting new message." << endl;
                     if ((msg_rcv = udp.listenMessage()) != NULL) {
-                        //cout << "RAW_MSG_RECV: " << msg->getRaw() << endl;
-                        /* Initialization for testing */
-                        val = 4;
-                        dck = 20;
-                        /* END Initialization */
+                        cout << ">------------------------[ RECEPTION ]------------------------------<" <<endl; 
+                        cout << "RAW_MSG_RECV: [" << msg_rcv->getByteSize() << "] bytes" << endl << msg_rcv->getRaw() << endl;
                         stringstream sstream(msg_rcv->getNodeVal());
                         Eotq<T> r_node(msg_rcv->getNodeId());
                         r_node.sck = msg_rcv->getNodeSck();
@@ -156,8 +185,13 @@ public:
                             sstream.str(msg_rcv->getNodeTokenVal());
                             sstream >> r_node.tokens[msg_rcv->getNodeId()].second;
                         }   
+                        
+                        if ( msg_rcv->hasToken() )
+                            fillSlots(r_node);
                         createSlot(r_node);
                         //cout << r_node << endl;
+                        
+                        cout << ">------------------------[ SENDING ]------------------------------<" <<endl; 
                         
                         /* PREPARING TO SEND REPLY MESSAGE*/
                         Message msg_reply;
@@ -189,9 +223,16 @@ public:
                             }
                         }
                         
+                        
+                        cout << "RAW_MSG_REPLY: [" << msg_reply.getByteSize() << "] bytes" << endl << msg_rcv->getRaw() << endl;
                         UDPSocket udp_send;
                         if (udp_send.createSocket()) {
                             if (udp_send.bindSocket("", 0)) {
+                                /* !!!!!!!! attention !!!!!!!!
+                                 * the receiver address must be consulted in class neighbors
+                                 * because the whispering will be from another port 
+                                 * !!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                */
                                 udp_send.sendMessage(msg_reply, msg_rcv->getSenderAddr());
                                 udp_send.closeSocket();
                             }
@@ -381,6 +422,11 @@ void InitializeNodes()
         nodes[i].id     = i;
         nodes[i].port   = START_LST_PORT + i;
         nodes[i].val    = 20+i;
+        
+        /* Initialization for testing */
+        nodes[i].val = 4;
+        nodes[i].dck = 20;
+        //slots[2] = make_pair(make_pair(10, 20), 2);
     }
     
     for(vector<int>::size_type i = 0; i != neighbors.size(); i++) {
