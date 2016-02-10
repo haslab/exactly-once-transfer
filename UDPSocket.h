@@ -39,7 +39,7 @@ public:
     void closeSocket();
     bool bindSocket(std::string ip_addr, int p);
     Message* listenMessage();
-    bool sendMessage(Message &msg, struct sockaddr_in r_addr);
+    bool sendMessage(Message &msg, struct sockaddr_in r_addr, int r_port);
     struct sockaddr_in convertIP(std::string& ip, int& p);
     
 private:

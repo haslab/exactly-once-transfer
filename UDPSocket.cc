@@ -75,8 +75,9 @@ Message* UDPSocket::listenMessage() {
     return NULL;
 }
 
-bool UDPSocket::sendMessage(Message &msg, struct sockaddr_in r_addr) {
+bool UDPSocket::sendMessage(Message &msg, struct sockaddr_in r_addr, int r_port) {
     socklen_t r_sock_len = sizeof(r_addr);
+    r_addr.sin_port = htons(r_port);
 
     google::protobuf::io::ArrayOutputStream arr(buffer, sizeof(buffer));
     google::protobuf::io::CodedOutputStream output(&arr);

@@ -26,28 +26,39 @@
 using namespace std;
 
 #define START_LST_PORT  8000    // 1st port to start listen
-#define NUM_NODES       10      // number of nodes to spawn
-
+#define NUM_NODES       10
 float zero() {
     return 0;
 }
 
-float oplus (const float &a, const float &b) {
-  return a + b;
+float oplus(const float &a, const float &b) {
+    return a + b;
 }
 
-int oplus (const int &a, const int &b) {
-  return a + b;
+int oplus(const int &a, const int &b) {
+    return a + b;
 }
 
-float needs (const float &a, const float &b)
-{
-  return (b-a+abs(b-a))/4;
+float needs(const float &a, const float &b) {
+    return (b - a + abs(b - a)) / 4;
 }
 
-int needs (const int &a, const int &b)
-{
-  return (b-a+abs(b-a))/4;
+int needs(const int &a, const int &b) {
+    return (b - a + abs(b - a)) / 4;
+}
+
+pair<float, float> split(const float & x, const float & h) {
+    pair<float, float> r;
+    r.first = (x - h + abs(x - h)) / 2;
+    r.second = (x + h - abs(x - h)) / 2;
+    return r;
+}
+
+pair<int, int> split(const int & x, const int & h) {
+    pair<int, int> r;
+    r.first = (x - h + abs(x - h)) / 2;
+    r.second = (x + h - abs(x - h)) / 2;
+    return r;
 }
 
 template<typename T>
@@ -61,6 +72,8 @@ public:
     
     map < int, pair<pair<int, int>, T> > slots;
     map < int, pair<pair<int, int>, T> > tokens;
+    
+    map < int, pair<string, int> > neighbors;
 
     /* CONSTRUCTOR */
     Eotq(int i=0, int p=0, T v=zero()) {
@@ -69,8 +82,6 @@ public:
         sck = 0;
         dck = 0;
         port= p;
-        
-        /* END Initialization */
         
         /* Spawn listening thread */
         //boost::thread th_listen(startListening);
@@ -95,6 +106,7 @@ public:
         output << "id: " << o.id << " val: " << o.val <<
                   " sck: " << o.sck << " dck: " << o.dck << endl;
         typename map < int, pair<pair<int, int>, T> >::const_iterator it;
+        typename map < int, pair<string, int> >::const_iterator ne;
         for (it = o.slots.begin(); it != o.slots.end(); it++) {
             output << "SLOT: ( " << it->first 
                    << ", [sck:" << it->second.first.first << ", dck: " << it->second.first.second << "], "
@@ -105,11 +117,19 @@ public:
                    << ", [sck:" << it->second.first.first << ", dck: " << it->second.first.second << "], "
                    << it->second.second << ")"<< endl;
         }
+        
+        for (ne = o.neighbors.begin(); ne != o.neighbors.end(); ne++) {
+            output << "NEIGHBOR: ( " << ne->first
+                   << ", [ip_addr:" << ne->second.first << ", port: " << ne->second.second << "], "
+                   << ")"<< endl;
+        }
+        
         return output;
     }
     
     void fillSlots(Eotq<T> &j) 
     {
+        cout << "fillSlots" << endl;
         typename map<int, pair<pair<int, int>, T > >::iterator its = slots.find(j.id);
         typename map<int, pair<pair<int, int>, T > >::iterator itt;
         pair<pair<int, int>, T> token;
@@ -138,6 +158,7 @@ public:
 	
     void createSlot(Eotq<T> &j) 
     {
+        cout << "CreateSlot" << endl;
         typename map < int, pair<pair<int, int>, T> >::iterator its = slots.find(j.id);
         
         if ( its == slots.end() )
@@ -151,6 +172,55 @@ public:
             }
         }
         //else cout << "SLOT[" << j.id << "] already exists !!!" << endl;
+    }
+    
+    void GCTokens(Eotq<T> &j)
+    {
+        cout << "GCTokens" << endl;
+        typename map<int, pair<pair<int, int>, T > >::iterator its;
+        typename map<int, pair<pair<int, int>, T > >::iterator itt = tokens.find(j.id);
+        pair<pair<int, int>, T> token;
+        pair<pair<int, int>, T> slot;
+        
+        if (itt != tokens.end()) {
+            // j \in dom(i.tokens)
+            cout << "token to del" << endl;
+            token = itt->second;
+            its = j.slots.begin();
+            if (its != j.slots.end()) {
+                // i \in dom(j.slots)
+                slot = its->second;
+                if (token.first.second < slot.first.second) {
+                    tokens.erase(itt);
+                }
+            } 
+            else {
+                // i \not \in dom(j.slots)
+                if (token.first.second < j.dck)
+                    tokens.erase(itt);
+            }
+        }
+    }
+    
+    void createToken(Eotq<T> &j)
+    {
+        cout << "CreateToken" << endl;
+        typename map<int, pair<pair<int, int>, T > >::iterator its = j.slots.begin();
+        pair<pair<int, int>, T> token;
+        pair<pair<int, int>, T> slot;
+        
+        if (its != j.slots.end()) {
+            // i \in dom(j.slots)
+            slot = its->second;
+            if (slot.first.first == sck) {
+                pair<T, T> p = split(val, slot.second);
+                val = p.first;
+                token.first = slot.first;
+                token.second = p.second;
+                tokens[j.id] = token;
+                sck++;
+            }
+        }
     }
     
     void startListening() 
@@ -189,6 +259,9 @@ public:
                         if ( msg_rcv->hasToken() )
                             fillSlots(r_node);
                         createSlot(r_node);
+                        GCTokens(r_node);
+                        if ( msg_rcv->hasSlot() )
+                            createToken(r_node);
                         //cout << r_node << endl;
                         
                         cout << ">------------------------[ SENDING ]------------------------------<" <<endl; 
@@ -224,16 +297,11 @@ public:
                         }
                         
                         
-                        cout << "RAW_MSG_REPLY: [" << msg_reply.getByteSize() << "] bytes" << endl << msg_rcv->getRaw() << endl;
+                        cout << "RAW_MSG_REPLY: [" << msg_reply.getByteSize() << "] bytes" << endl << msg_reply.getRaw() << endl;
                         UDPSocket udp_send;
                         if (udp_send.createSocket()) {
                             if (udp_send.bindSocket("", 0)) {
-                                /* !!!!!!!! attention !!!!!!!!
-                                 * the receiver address must be consulted in class neighbors
-                                 * because the whispering will be from another port 
-                                 * !!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                */
-                                udp_send.sendMessage(msg_reply, msg_rcv->getSenderAddr());
+                                udp_send.sendMessage(msg_reply, msg_rcv->getSenderAddr(), neighbors[r_node.id].second);
                                 udp_send.closeSocket();
                             }
                         }
@@ -295,18 +363,8 @@ public:
     }
 };
 
-class Node
-{
-private:
-public:    
-    int port;
-    string ip_addr;
-    Node(string ip="127.0.0.1", int p=0): ip_addr(ip), port(p) {};
-};
-
 /* Starting with global declarations */
 vector< Eotq<int> > nodes(NUM_NODES);
-vector< Node > neighbors(NUM_NODES);
 
 vector<string> splitOptString(const string &s, char delim) {
     stringstream ss(s);
@@ -416,7 +474,6 @@ void InitializeNodes()
 {
     cout << "Starting Nodes ..." << endl;
     cout << "SIZE_Nodes: " << nodes.size() << endl;
-    cout << "SIZE_Neighbors: " << neighbors.size() << endl;
     /* Initialize base values values to nodes (if needed) */
     for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
         nodes[i].id     = i;
@@ -424,13 +481,22 @@ void InitializeNodes()
         nodes[i].val    = 20+i;
         
         /* Initialization for testing */
-        nodes[i].val = 4;
-        nodes[i].dck = 20;
-        //slots[2] = make_pair(make_pair(10, 20), 2);
+        nodes[i].val = 8;
+        nodes[i].sck = 10;
+        nodes[i].dck = 100;
+        /* END Initialization */
+        
     }
     
-    for(vector<int>::size_type i = 0; i != neighbors.size(); i++) {
-        neighbors[i].port    = nodes[i].port;
+    for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
+        for(vector<int>::size_type j = 0; j != nodes.size(); j++) {
+            nodes[i].neighbors[j].first  = "127.0.0.1";
+            nodes[i].neighbors[j].second = nodes[j].port;
+            
+            /* Initialization for testing */
+            nodes[i].neighbors[j].second = 7500;
+            /* END Initialization */
+        }
     }
     
     //nodes[0].annouceResourcesToNeighbor("127.0.0.1", 8888);
