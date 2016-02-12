@@ -40,7 +40,7 @@ public:
     bool bindSocket(std::string ip_addr, int p);
     Message* listenMessage();
     bool sendMessage(Message &msg, struct sockaddr_in r_addr, int r_port);
-    struct sockaddr_in convertIP(std::string& ip, int& p);
+    struct sockaddr_in convertIP(std::string &ip);
     
 private:
     struct  sockaddr_in l_addr, r_addr;

@@ -15,25 +15,23 @@
 
 /* ::: IPv4 ::: 
 struct sockaddr_in {
-    short            sin_family;    // e.g. AF_INET
-    unsigned short   sin_port;      // e.g. htons(3490)
-    struct in_addr   sin_addr;      // see struct in_addr, below
-    char             sin_zero[8];   // zero this if you want to
+    short            sin_family;
+    unsigned short   sin_port;
+    struct in_addr   sin_addr;
+    char             sin_zero[8];
 };
 
 struct in_addr {
-    unsigned long s_addr;           // load with inet_aton()
+    unsigned long s_addr;
 };
 */
 
-UDPSocket::UDPSocket() {
-}
+UDPSocket::UDPSocket() {}
 
 UDPSocket::UDPSocket(const UDPSocket& orig) {
 }
 
-UDPSocket::~UDPSocket() {
-}
+UDPSocket::~UDPSocket() {}
 
 bool UDPSocket::createSocket() {
     sock_desc = socket(AF_INET, SOCK_DGRAM, 0);
@@ -42,7 +40,8 @@ bool UDPSocket::createSocket() {
     return true;            
 }
 
-bool UDPSocket::bindSocket(std::string ip_addr="", int p=0) {
+bool UDPSocket::bindSocket(std::string ip_addr="", int p=0) 
+{
     memset((char *) &l_addr, 0, sizeof (l_addr));
     l_addr.sin_family = AF_INET;
     l_addr.sin_addr.s_addr = !ip_addr.empty() ? inet_addr(ip_addr.c_str()) : htonl(INADDR_ANY);
@@ -53,7 +52,8 @@ bool UDPSocket::bindSocket(std::string ip_addr="", int p=0) {
     return true;
 }
 
-Message* UDPSocket::listenMessage() {
+Message* UDPSocket::listenMessage() 
+{
     socklen_t r_sock_len = sizeof(r_addr);
     int recvlen = recvfrom(sock_desc, buffer, MAX_BUFSIZE, 0, (struct sockaddr *) &r_addr, &r_sock_len);
     if (recvlen > 0) {
@@ -75,7 +75,8 @@ Message* UDPSocket::listenMessage() {
     return NULL;
 }
 
-bool UDPSocket::sendMessage(Message &msg, struct sockaddr_in r_addr, int r_port) {
+bool UDPSocket::sendMessage(Message &msg, struct sockaddr_in r_addr, int r_port) 
+{
     socklen_t r_sock_len = sizeof(r_addr);
     r_addr.sin_port = htons(r_port);
 
@@ -97,11 +98,11 @@ UDPSocket::closeSocket()
     close(sock_desc);
 }
 
-struct sockaddr_in UDPSocket::convertIP(std::string& ip_addr, int& p){
+struct sockaddr_in UDPSocket::convertIP(std::string &ip_addr)
+{
     memset((char *) &l_addr, 0, sizeof (l_addr));
     l_addr.sin_family = AF_INET;
     l_addr.sin_addr.s_addr = !ip_addr.empty() ? inet_addr(ip_addr.c_str()) : htonl(INADDR_ANY);
-    l_addr.sin_port = htons(p);
 
     return l_addr;
 }

@@ -1,32 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   eotq.cc
- * Author: fsilva
- *
- * Created on 10 November 2015, 21:46
- */
-
 #include <cstdlib>
 #include <map>
 #include <iostream>
 #include <string>
-#include <unistd.h>         /* for sleep/usleep */
+#include <unistd.h>
 #include "Message.h"
 #include "UDPSocket.h"
-#include "TCPSocket.h"
 #include <vector>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/thread.hpp>
+#include <boost/thread/mutex.hpp>
 
 using namespace std;
 
 #define START_LST_PORT  8000    // 1st port to start listen
-#define NUM_NODES       10
+#define NUM_NODES       4       // # of nodes to spawn
+
 float zero() {
     return 0;
 }
@@ -63,6 +51,7 @@ pair<int, int> split(const int & x, const int & h) {
 
 template<typename T>
 class Eotq {
+private:  
 public:
     T val;
     int id;
@@ -74,7 +63,7 @@ public:
     map < int, pair<pair<int, int>, T> > tokens;
     
     map < int, pair<string, int> > neighbors;
-
+    
     /* CONSTRUCTOR */
     Eotq(int i=0, int p=0, T v=zero()) {
         id  = i;
@@ -82,14 +71,12 @@ public:
         sck = 0;
         dck = 0;
         port= p;
-        
+               
         /* Spawn listening thread */
         //boost::thread th_listen(startListening);
         //startListening();
     }
-    
-    void plus(T v)
-    {
+    void plus(T v) {
         val = oplus(val, v);
     }
     
@@ -101,7 +88,7 @@ public:
         return slots.size();
     }
 
-    /* parse the output to screen */
+    /* parse the node content to screen */
     friend ostream &operator<<(ostream &output, const Eotq &o) {
         output << "id: " << o.id << " val: " << o.val <<
                   " sck: " << o.sck << " dck: " << o.dck << endl;
@@ -118,17 +105,15 @@ public:
                    << it->second.second << ")"<< endl;
         }
         
-        for (ne = o.neighbors.begin(); ne != o.neighbors.end(); ne++) {
-            output << "NEIGHBOR: ( " << ne->first
-                   << ", [ip_addr:" << ne->second.first << ", port: " << ne->second.second << "], "
-                   << ")"<< endl;
-        }
+//        for (ne = o.neighbors.begin(); ne != o.neighbors.end(); ne++) {
+//            output << "NEIGHBOR: ( " << ne->first
+//                   << ", [ip_addr:" << ne->second.first << ", port: " << ne->second.second << "], "
+//                   << ")"<< endl;
+//        }
         
         return output;
     }
-    
-    void fillSlots(Eotq<T> &j) 
-    {
+    void fillSlots(Eotq<T> &j) {
         cout << "fillSlots" << endl;
         typename map<int, pair<pair<int, int>, T > >::iterator its = slots.find(j.id);
         typename map<int, pair<pair<int, int>, T > >::iterator itt;
@@ -137,107 +122,107 @@ public:
 
         if ( its != slots.end() ) {
             // j \in dom(slots_i)
-            slot=its->second;
-            itt=j.tokens.begin();
-            if ( itt != j.tokens.end() )
-            {
-                token=itt->second;
+            slot = its->second;
+            itt = j.tokens.begin();
+            if ( itt != j.tokens.end() ) {
+                token = itt->second;
                 if ( token.first == slot.first ) {
                     val = oplus(val, token.second);
                     slots.erase(its);
-                }
+                } 
                 else if ( itt->second.first.first > its->second.first.first )
                     slots.erase(its);
             }
         }
         //else:
-            //there's no corresponding slot_i for this token
-            //token to be removed in GCTokens
-            //need to check up on this later
+        //there's no corresponding slot_i for this token
+        //token to be removed in GCTokens
+        //need to check up on this later
     }
-	
-    void createSlot(Eotq<T> &j) 
-    {
+    
+    bool createSlot(Eotq<T> &j) {
         cout << "CreateSlot" << endl;
         typename map < int, pair<pair<int, int>, T> >::iterator its = slots.find(j.id);
-        
-        if ( its == slots.end() )
-        {
+
+        if ( its == slots.end() ) {
             T hint;
             hint = needs(val, j.val);
             //cout << "VAL_1=" << val << " :: VAL_2=" << j.val << " :: H=" << hint << endl;
-            if ( hint != zero()) {
+            if ( hint != zero() ) {
                 slots[j.id] = make_pair(make_pair(j.sck, dck), hint);
                 dck++;
+                return 1;
             }
         }
         //else cout << "SLOT[" << j.id << "] already exists !!!" << endl;
+        return 0;
     }
     
-    void GCTokens(Eotq<T> &j)
-    {
+    void GCTokens(Eotq<T> &j) {
         cout << "GCTokens" << endl;
         typename map<int, pair<pair<int, int>, T > >::iterator its;
         typename map<int, pair<pair<int, int>, T > >::iterator itt = tokens.find(j.id);
         pair<pair<int, int>, T> token;
         pair<pair<int, int>, T> slot;
         
-        if (itt != tokens.end()) {
+        if ( itt != tokens.end() ) {
             // j \in dom(i.tokens)
-            cout << "token to del" << endl;
             token = itt->second;
             its = j.slots.begin();
-            if (its != j.slots.end()) {
+            if ( its != j.slots.end() ) {
                 // i \in dom(j.slots)
                 slot = its->second;
-                if (token.first.second < slot.first.second) {
+                if ( token.first.second < slot.first.second ) {
                     tokens.erase(itt);
                 }
             } 
             else {
                 // i \not \in dom(j.slots)
-                if (token.first.second < j.dck)
+                if ( token.first.second < j.dck )
                     tokens.erase(itt);
             }
         }
     }
     
-    void createToken(Eotq<T> &j)
-    {
+    bool createToken(Eotq<T> &j) {
         cout << "CreateToken" << endl;
         typename map<int, pair<pair<int, int>, T > >::iterator its = j.slots.begin();
         pair<pair<int, int>, T> token;
         pair<pair<int, int>, T> slot;
         
-        if (its != j.slots.end()) {
+        if ( its != j.slots.end() ) {
             // i \in dom(j.slots)
             slot = its->second;
-            if (slot.first.first == sck) {
+            if ( slot.first.first == sck ) {
                 pair<T, T> p = split(val, slot.second);
                 val = p.first;
                 token.first = slot.first;
                 token.second = p.second;
                 tokens[j.id] = token;
                 sck++;
+                return 1;
             }
         }
+        return 0;
     }
     
-    void startListening() 
-    {
+    void startListening()  {
         UDPSocket udp;
         Message *msg_rcv;
-        if (udp.createSocket()) {
+        if ( udp.createSocket() ) {
             //cout << "[SUCCESS]: Creating socket." << endl;
-            if (udp.bindSocket("", port)) {
+            if ( udp.bindSocket("", port) ) {
                 cout << "[SUCCESS]: Binded on port " << port << endl;
                 for (;;) {
-                    cout << "Waiting new message." << endl;
-                    if ((msg_rcv = udp.listenMessage()) != NULL) {
-                        cout << ">------------------------[ RECEPTION ]------------------------------<" <<endl; 
-                        cout << "RAW_MSG_RECV: [" << msg_rcv->getByteSize() << "] bytes" << endl << msg_rcv->getRaw() << endl;
+                    //cout << "Waiting new message." << endl;
+                    if ( (msg_rcv = udp.listenMessage()) != NULL ) {
+                        cout << ">------------------------[ " << id << ": RECEPTION ]------------------------------<" <<endl; 
+                        cout << "RAW_MSG_RECV: [" << msg_rcv->getByteSize() << "] bytes" << endl << msg_rcv->getRaw();
+                        
                         stringstream sstream(msg_rcv->getNodeVal());
                         Eotq<T> r_node(msg_rcv->getNodeId());
+                        bool send_reply = 0;
+                        
                         r_node.sck = msg_rcv->getNodeSck();
                         r_node.dck = msg_rcv->getNodeDck();
                         sstream >> r_node.val;
@@ -258,54 +243,53 @@ public:
                         
                         if ( msg_rcv->hasToken() )
                             fillSlots(r_node);
-                        createSlot(r_node);
+                        send_reply = createSlot(r_node) ? 1 : 0;
                         GCTokens(r_node);
                         if ( msg_rcv->hasSlot() )
-                            createToken(r_node);
-                        //cout << r_node << endl;
+                            send_reply = createToken(r_node) || send_reply ? 1 : 0;
                         
-                        cout << ">------------------------[ SENDING ]------------------------------<" <<endl; 
-                        
-                        /* PREPARING TO SEND REPLY MESSAGE*/
-                        Message msg_reply;
-                        msg_reply.setNodeId(id);
-                        msg_reply.setNodeSck(sck);
-                        msg_reply.setNodeDck(dck);
-                        sstream.str(std::string());
-                        sstream.clear();
-                        sstream << val;
-                        msg_reply.setNodeVal(sstream.str());
-                        
-                        typename map < int, pair<pair<int, int>, T> >::const_iterator it;
-                        for (it = slots.begin(); it != slots.end(); it++) {
-                            if (it->first == r_node.id)
-                            {
-                                sstream.str(std::string());
-                                sstream.clear();
-                                sstream << it->second.second;
-                                msg_reply.setNodeSlot(it->second.first.first, it->second.first.second, sstream.str());
+                        if ( send_reply ) {
+                            cout << ">------------------------[ " << id << ": REPLYING ]------------------------------<" <<endl; 
+
+                            /* PREPARING TO SEND REPLY MESSAGE*/
+                            Message msg_reply;
+                            msg_reply.setNodeId(id);
+                            msg_reply.setNodeSck(sck);
+                            msg_reply.setNodeDck(dck);
+                            sstream.str(std::string());
+                            sstream.clear();
+                            sstream << val;
+                            msg_reply.setNodeVal(sstream.str());
+
+                            typename map < int, pair<pair<int, int>, T> >::const_iterator it;
+                            for (it = slots.begin(); it != slots.end(); it++) {
+                                if (it->first == r_node.id)
+                                {
+                                    sstream.str(std::string());
+                                    sstream.clear();
+                                    sstream << it->second.second;
+                                    msg_reply.setNodeSlot(it->second.first.first, it->second.first.second, sstream.str());
+                                }
+                            }
+                            for (it = tokens.begin(); it != tokens.end(); it++) {
+                                if (it->first == r_node.id)
+                                {
+                                    sstream.str(std::string());
+                                    sstream.clear();
+                                    sstream << it->second.second;
+                                    msg_reply.setNodeToken(it->second.first.first, it->second.first.second, sstream.str());
+                                }
+                            }
+
+                            cout << "RAW_MSG_REPLY: [" << msg_reply.getByteSize() << "] bytes" << endl << msg_reply.getRaw();
+                            UDPSocket udp_send;
+                            if (udp_send.createSocket()) {
+                                if (udp_send.bindSocket("", 0)) {
+                                    udp_send.sendMessage(msg_reply, msg_rcv->getSenderAddr(), neighbors[r_node.id].second);
+                                    udp_send.closeSocket();
+                                }
                             }
                         }
-                        for (it = tokens.begin(); it != tokens.end(); it++) {
-                            if (it->first == r_node.id)
-                            {
-                                sstream.str(std::string());
-                                sstream.clear();
-                                sstream << it->second.second;
-                                msg_reply.setNodeToken(it->second.first.first, it->second.first.second, sstream.str());
-                            }
-                        }
-                        
-                        
-                        cout << "RAW_MSG_REPLY: [" << msg_reply.getByteSize() << "] bytes" << endl << msg_reply.getRaw() << endl;
-                        UDPSocket udp_send;
-                        if (udp_send.createSocket()) {
-                            if (udp_send.bindSocket("", 0)) {
-                                udp_send.sendMessage(msg_reply, msg_rcv->getSenderAddr(), neighbors[r_node.id].second);
-                                udp_send.closeSocket();
-                            }
-                        }
-                        
                     }
                   }
             } 
@@ -319,44 +303,67 @@ public:
             //return 2;
         }
     }
-    
-    /*
-    void prepareSpamming() 
-    {
-        /* for each neighbor
-        for(;;)
-        {
-            boost::thread k(boost::bind(&Eotq<int>::spamResources, this));
-            k.detach();
-            boost::this_thread::sleep(boost::posix_time::seconds(3));
+    void prepareToSpam() {
+        typename map < int, pair<string, int> >::const_iterator itn;
+
+        for (;;) {
+            int sleepTime = (rand() % 30) + 1;
+            boost::this_thread::sleep_for(boost::chrono::seconds(sleepTime));
+            for (itn = neighbors.begin(); itn != neighbors.end(); itn++) {
+                boost::thread th(boost::bind(&Eotq<T>::startSpam, this, itn));
+                th.detach();
+            }
         }
     }
-    */
     
-    void annouceResourcesToNeighbor(string neigh_ip_addr, int neigh_port)
-    {
-        cout << "FROM: " << id << ":" << port << " start spam: " << val << endl;
-        cout << "TO: " << neigh_ip_addr << ":" << neigh_port << endl;
-        /*
+    void startSpam(typename map < int, pair<string, int> >::const_iterator &itn) {
+        //cout << "FROM: " << id << ":" << port << " :: val=" << val << endl;
+        //cout << "TO: " << itn->first << ":" << itn->second.second << endl;
         UDPSocket udp;
         
-        if (udp.bindSocket("", 0)) 
+        if ( udp.createSocket() ) 
         {
-            cout << "[SUCCESS]: Binded on port " << port << endl;
-            udp.sendMessage("TESTE"+val , udp.convertIP(neigh_ip_addr, neigh_port));
+            if ( udp.bindSocket("", 0) ) 
+            {
+                typename map < int, pair<pair<int, int>, T> >::iterator its = slots.find(itn->first);
+                typename map < int, pair<pair<int, int>, T> >::iterator itt = tokens.find(itn->first);
+
+                Message msg;
+                msg.setNodeId(id);
+                msg.setNodeSck(sck);
+                msg.setNodeDck(dck);
+                stringstream sstream;
+                sstream << val;
+                msg.setNodeVal(sstream.str());
+                if ( its != slots.end() ) {
+                    sstream.str(std::string());
+                    sstream.clear();
+                    sstream << its->second.second;
+                    msg.setNodeSlot(its->second.first.first, its->second.first.second, sstream.str());
+                }
+                if ( itt != tokens.end() ) {
+                    sstream.str(std::string());
+                    sstream.clear();
+                    sstream << itt->second.second;
+                    msg.setNodeToken(itt->second.first.first, itt->second.first.second, sstream.str());
+                }
+                
+                cout << ">------------------------[ " << id << ": SPAMMING ]------------------------------<" <<endl; 
+                cout << "Sending from: " << id << "->" << itn->first << " -- [" << itn->second.first << ":" << itn->second.second << "]"<< endl << msg.getRaw();
+                udp.sendMessage(msg, udp.convertIP((string &)itn->second.first), itn->second.second);
+                udp.closeSocket();
+            } 
+            else {
+                cout << "[ERROR]: Trying to bind. [void startSpam(...)]" << endl;
+            }
         }
-        else 
-        {
-            cout << "[ERROR]: Trying to binding." << endl;
-            //return 1;
-        }*/
-        
+        else {
+            cout << "[ERROR]: Trying to create socket. [void startSpam(...)]" << endl;
+        }
     }
     
-    void testThread()
-    {
-        for(;;)
-        {
+    void testThread() {
+        for (;;) {
             cout << id << ":" << port << " -> " << val << endl;
             sleep(2);
         }
@@ -366,7 +373,8 @@ public:
 /* Starting with global declarations */
 vector< Eotq<int> > nodes(NUM_NODES);
 
-vector<string> splitOptString(const string &s, char delim) {
+vector<string> splitOptString(const string &s, char delim) 
+{
     stringstream ss(s);
     string item;
     vector<string> tokens;
@@ -447,7 +455,7 @@ void brokerThread(string ip_addr="", int port=0)
                         reply << "\tReply: " << nodes[atoi(ops[1].c_str())];
                         write(r_sock , reply.str().c_str() , reply.str().length());
                     } 
-                    else if ( ops[0] == "done")
+                    else if ( ops[0] == "done" )
                     {
                         cout << "[INFO]: Client disconnected." << endl;
 
@@ -478,24 +486,26 @@ void InitializeNodes()
     for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
         nodes[i].id     = i;
         nodes[i].port   = START_LST_PORT + i;
-        nodes[i].val    = 20+i;
+        nodes[i].val    = 20*i;
         
         /* Initialization for testing */
-        nodes[i].val = 8;
-        nodes[i].sck = 10;
-        nodes[i].dck = 100;
+//        nodes[i].val = 4;
+//        nodes[i].sck = 10;
+//        nodes[i].dck = 100;
         /* END Initialization */
         
     }
     
     for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
         for(vector<int>::size_type j = 0; j != nodes.size(); j++) {
-            nodes[i].neighbors[j].first  = "127.0.0.1";
-            nodes[i].neighbors[j].second = nodes[j].port;
-            
-            /* Initialization for testing */
-            nodes[i].neighbors[j].second = 7500;
-            /* END Initialization */
+            if ( i != j ) {
+                nodes[i].neighbors[j].first  = "127.0.0.1";
+                nodes[i].neighbors[j].second = nodes[j].port;
+
+                /* Initialization for testing */
+                //nodes[i].neighbors[j].second = 7500;
+                /* END Initialization */
+            }
         }
     }
     
@@ -504,7 +514,7 @@ void InitializeNodes()
     /* Create initial socket for listening*/    
     for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
         //boost::thread nodeListen(boost::bind(&Eotq<int>::testThread, &nodes[i]));
-        boost::thread t(boost::bind(&Eotq<int>::startListening, &nodes[i]));
+        boost::thread thl(boost::bind(&Eotq<int>::startListening, &nodes[i]));
     }
     
     /* Test to verify shared mem between threads in each EOTQ class
@@ -521,9 +531,9 @@ void InitializeNodes()
     }*/
     
     /* Create initial socket for spamming node resources */
-    /*for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
-        boost::thread t(boost::bind(&Eotq<int>::prepareSpamming, &nodes[i]));
-    }*/
+    for(vector<int>::size_type i = 0; i != nodes.size(); i++) {
+        boost::thread ths(boost::bind(&Eotq<int>::prepareToSpam, &nodes[i]));
+    }
     
     
     /* Broker thread */
@@ -531,7 +541,7 @@ void InitializeNodes()
     broker.detach();
     //cout << "Waiting for clients to join." << endl;
     //broker.join();
-    //cout << "end join" << endl;
+    //cout << "Terminating broker thread." << endl;
 }
 
 void test1() {
@@ -551,5 +561,5 @@ void test1() {
 int main() {
     //test1();
     InitializeNodes();
-    sleep(100);
+    sleep(200);
 }
